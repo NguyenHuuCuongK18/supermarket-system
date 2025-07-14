@@ -1,0 +1,18 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.PRM392_OSS" parent="Theme.Material3.Light">
+
+    </style>
+
+    <style name="Theme.PRM392_OSS" parent="Base.Theme.PRM392_OSS" />
+
+    <style name="Theme.EditProfile" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <item name="colorPrimary">@color/dark_blue</item>
+    </style>
+
+    <style name="Theme.ChangePassword" parent="Theme.MaterialComponents.Light.DarkActionBar">
+        <item name="colorPrimary">@color/dark_blue</item>
+    </style>
+
+
+</resources>

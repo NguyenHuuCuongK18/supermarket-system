@@ -1,0 +1,59 @@
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="4dp"
+    android:layout_margin="8dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="12dp">
+
+        <!-- Ảnh sản phẩm -->
+        <ImageView
+            android:id="@+id/ivProductImage"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:scaleType="centerCrop"
+            android:adjustViewBounds="true"
+            android:background="@android:color/darker_gray"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Tên sản phẩm -->
+        <TextView
+            android:id="@+id/tvProductName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tên sản phẩm"
+            android:textSize="18sp"
+            android:textColor="#212121"
+            android:textStyle="bold"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:layout_marginBottom="4dp" />
+
+        <!-- Giá sản phẩm -->
+        <TextView
+            android:id="@+id/tvProductPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Giá sản phẩm"
+            android:textSize="16sp"
+            android:textColor="#757575"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Nút Add to Cart -->
+        <Button
+            android:id="@+id/btnAddToCart"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:text="Add to Cart"
+            android:textSize="16sp"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="@color/purple_500"
+            android:layout_marginTop="8dp" />
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

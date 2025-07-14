@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission
+        android:name="android.permission.INTERNET"
+        tools:ignore="ManifestOrder" />
+
+    <application
+        android:name=".database.App"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.PRM392_OSS"
+        tools:targetApi="31">
+        <activity
+            android:name=".activity.WelcomeActivityCustomer"
+            android:theme="@style/Theme.MyApp"
+            android:exported="true" />
+        <activity
+            android:name=".activity.ProductDetailActivityCustomer"
+            android:theme="@style/Theme.MyApp"
+            android:exported="false" />
+        <activity
+            android:name=".activity.OrderHistoryActivityCustomer"
+            android:theme="@style/Theme.MyApp"
+            android:exported="false" />
+        <activity
+            android:name=".activity.CreateOrderActivityCustomer"
+            android:theme="@style/Theme.MyApp"
+            android:exported="false" />
+        <activity
+            android:name=".activity.CheckoutActivityCustomer"
+            android:theme="@style/Theme.MyApp"
+            android:exported="false" />
+        <activity
+            android:name=".activity.CartActivityCustomer"
+            android:theme="@style/Theme.MyApp"
+            android:exported="false" />
+        <activity
+            android:name=".activity.ProductListActivityCustomer"
+            android:theme="@style/Theme.MyApp"
+            android:exported="false" />
+
+        <activity
+            android:name=".activity.LoginActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".activity.RegisterActivity"
+            android:exported="true" />
+        <activity android:name=".activity.ForgetPasswordActivity"
+            android:exported="true" />
+        <activity android:name=".activity.ChangePasswordActivity"
+            android:exported="true" />
+        <activity android:name=".activity.EditProfileActivity"
+            android:exported="true" />
+        <activity android:name=".activity.HomePageActivity"
+            android:exported="true" />
+
+        <activity
+            android:name=".activity.AddRoleActivity"
+            android:label="Role Managerment"
+            android:exported="true"/>
+        <activity
+            android:name=".activity.ListCustomerActivity"
+            android:label="Customer Managerment"
+            android:exported="true"/>
+        <activity
+            android:name=".activity.CustomerDetailActivity"
+            android:label="Customer Managerment"
+            android:parentActivityName=".activity.ListCustomerActivity"
+            android:exported="true"/>
+        <activity
+            android:name=".activity.OrdersListActivity"
+            android:label="Customer Managerment"
+            android:parentActivityName=".activity.ListCustomerActivity"
+            android:exported="true"/>
+        <activity
+            android:name=".activity.OrderDetailActivity"
+            android:label="Customer Managerment"
+            android:parentActivityName=".activity.OrdersListActivity"
+            android:exported="true"/>
+
+        <activity
+            android:name=".activity.ListCategoriesActivity"
+            android:label="Category Managerment"
+            android:exported="true"/>
+
+
+        <activity
+            android:name=".activity.ListEmployeeActivity"
+            android:label="Employee Managerment"
+            android:exported="true"/>
+        <activity
+            android:name=".activity.EmployeeDetailActivity"
+            android:label="Employee Managerment"
+            android:parentActivityName=".activity.ListEmployeeActivity"
+            android:exported="true">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.ListEmployeeActivity"/>
+        </activity>
+        <activity
+            android:name=".activity.AddEmployeeActivity"
+            android:label="Employee Managerment"
+            android:parentActivityName=".activity.ListEmployeeActivity"
+            android:exported="true">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.ListEmployeeActivity"/>
+        </activity>
+        <activity
+            android:name=".activity.ListProductActivity"
+            android:label="Product Managerment"
+            android:exported="true"/>
+
+        <activity
+            android:name=".activity.MainActivity"
+            android:exported="true">
+        </activity>
+
+        <activity android:name=".activity.ProductListOfEmployeeActivity"
+            android:exported="true"
+            android:parentActivityName=".activity.ListCategoriesActivity"/>
+
+        <activity android:name=".activity.UpdateProductActivity"
+            android:exported="true"
+            android:parentActivityName=".activity.ProductListOfEmployeeActivity" />
+
+        <activity android:name=".activity.AddProductActivity"
+            android:exported="true"
+            android:parentActivityName=".activity.ListCategoriesActivity"/>
+
+        <activity android:name=".activity.SupplierListActivity"
+            android:exported="true"
+            android:parentActivityName=".activity.ListCategoriesActivity"/>
+        <activity android:name=".activity.UpdateSupplierActivity"
+            android:exported="true"
+            android:parentActivityName=".activity.SupplierListActivity"/>
+
+        <activity android:name=".activity.AddSupplierActivity"
+            android:exported="true"
+            android:parentActivityName=".activity.SupplierListActivity"/>
+
+        <activity android:name=".activity.UpdateOrderStatusActivity"
+            android:exported="true"
+            android:parentActivityName=".activity.ListOrdersActivity"/>
+
+        <activity android:name=".activity.ListOrdersActivity"
+            android:exported="true"
+            android:parentActivityName=".activity.ListCategoriesActivity"/>
+
+    </application>
+
+</manifest>

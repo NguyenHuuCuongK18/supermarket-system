@@ -1,0 +1,80 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Tên khách hàng -->
+    <EditText
+        android:id="@+id/etCustomerName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nhập tên khách hàng"
+        android:textSize="16sp"
+        android:layout_marginBottom="8dp" />
+
+    <!-- Số điện thoại -->
+    <EditText
+        android:id="@+id/etPhoneNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nhập số điện thoại"
+        android:inputType="phone"
+        android:textSize="16sp"
+        android:layout_marginBottom="8dp" />
+
+    <!-- Địa chỉ -->
+    <EditText
+        android:id="@+id/etAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nhập địa chỉ"
+        android:textSize="16sp"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Hiển thị giá sản phẩm -->
+    <TextView
+        android:id="@+id/tvProductAmount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Giá sản phẩm: 0 VNĐ"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="4dp" />
+
+    <!-- Hiển thị phí ship -->
+    <TextView
+        android:id="@+id/tvShippingFee"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Phí ship: 30,000 VNĐ"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="4dp"
+        android:textColor="#FF5722" />
+
+    <!-- Hiển thị tổng tiền cuối cùng -->
+    <TextView
+        android:id="@+id/tvTotalAmount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tổng cộng: 0 VNĐ"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="#4CAF50"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Nút thanh toán -->
+    <Button
+        android:id="@+id/btnCheckout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Thanh toán"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:backgroundTint="#4CAF50"
+        android:textColor="#FFFFFF" />
+</LinearLayout>

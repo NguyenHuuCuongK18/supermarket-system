@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <!-- Cho phép lăn lên/lăn xuống -->
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/item_cart" />
+
+            <TextView
+                android:id="@+id/tvEmptyCartMessage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Giỏ hàng trống!"
+                android:textSize="18sp"
+                android:textColor="#757575"
+                android:gravity="center"
+                android:visibility="gone"
+                android:layout_marginTop="16dp" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- Nút tạo đơn hàng -->
+    <Button
+        android:id="@+id/btnCreateOrder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tạo đơn hàng"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:backgroundTint="#FF9800"
+        android:textColor="#FFFFFF"
+        android:layout_marginTop="16dp" />
+
+</LinearLayout>

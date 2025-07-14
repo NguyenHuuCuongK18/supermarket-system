@@ -1,0 +1,54 @@
+package project.prm392_oss.activity;
+
+import android.os.Bundle;
+import android.widget.ListView;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.List;
+
+import project.prm392_oss.R;
+import project.prm392_oss.adapter.OrderHistoryAdapterCustomer;
+import project.prm392_oss.database.DatabaseClient;
+import project.prm392_oss.entity.Order;
+
+public class OrderHistoryActivityCustomer extends AppCompatActivity {
+
+    private ListView listViewOrders;
+    private OrderHistoryAdapterCustomer adapter;
+    private List<Order> orderList;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_order_history_customer);
+
+        listViewOrders = findViewById(R.id.listViewOrders);
+
+        loadOrderHistory();
+    }
+
+    private void loadOrderHistory() {
+        new Thread(() -> {
+            try {
+                int customerId = 1; // Lấy theo user số 1
+                orderList = DatabaseClient.getInstance(this).getAppDatabase()
+                        .orderDAO()
+                        .getOrdersByCustomerId(customerId);
+
+                runOnUiThread(() -> {
+                    if (orderList != null && !orderList.isEmpty()) {
+                        adapter = new OrderHistoryAdapterCustomer(this, orderList);
+                        listViewOrders.setAdapter(adapter);
+                    } else {
+                        Toast.makeText(this, "Không có đơn hàng nào!", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            } catch (Exception e) {
+                runOnUiThread(() ->
+                        Toast.makeText(this, "Lỗi khi tải lịch sử đơn hàng!", Toast.LENGTH_SHORT).show());
+            }
+        }).start();
+    }
+}

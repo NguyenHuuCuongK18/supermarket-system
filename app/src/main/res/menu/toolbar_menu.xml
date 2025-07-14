@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_employee_management"
+        android:title="Employee Management" />
+    <item
+        android:id="@+id/nav_customer_management"
+        android:title="Customer Management" />
+    <item
+        android:id="@+id/nav_product_management"
+        android:title="Product Management" />
+
+
+    <item android:title="Profile Management">
+        <menu>
+            <item android:id="@+id/view_profile"
+                android:title="View Profile"/>
+            <item android:id="@+id/logout"
+                android:title="Logout"/>
+        </menu>
+    </item>
+
+</menu>

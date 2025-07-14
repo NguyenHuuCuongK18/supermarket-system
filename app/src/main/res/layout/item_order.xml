@@ -1,0 +1,41 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="12dp"
+    android:background="#f9f9f9"
+    android:layout_marginBottom="8dp">
+
+    <TextView
+        android:id="@+id/tvOrderId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ID: #"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvOrderDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Date: ..." />
+
+    <TextView
+        android:id="@+id/tvOrderStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Status: ..." />
+
+    <TextView
+        android:id="@+id/tvOrderTotal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Total Amount: ..." />
+
+    <Button
+        android:id="@+id/btnViewDetail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#006CB0"
+        android:text="View Detail"
+        android:textColor="#FFFFFF" />
+</LinearLayout>

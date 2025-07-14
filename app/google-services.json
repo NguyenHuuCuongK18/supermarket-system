@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "443605237255",
+    "project_id": "online-supermarket-system",
+    "storage_bucket": "online-supermarket-system.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:443605237255:android:4ffb5b1258b95fafcbf4a2",
+        "android_client_info": {
+          "package_name": "project.prm392_oss"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAovzy_m4aL1ITgqYpefMRSR25-O9GNQcw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
