@@ -117,12 +117,14 @@ public class CartAdapterCustomer extends RecyclerView.Adapter<CartAdapterCustome
         holder.btnDelete.setOnClickListener(v -> {
             int currentPosition = holder.getAdapterPosition();
             if (currentPosition != RecyclerView.NO_POSITION) {
+                CartItemDTO removeItem = cartItems.get(currentPosition);
                 cartItems.remove(currentPosition);
                 notifyItemRemoved(currentPosition);
                 notifyItemRangeChanged(currentPosition, cartItems.size());
 
                 Toast.makeText(context, "Sản phẩm đã được xóa", Toast.LENGTH_SHORT).show();
-
+                Executors.newSingleThreadExecutor().execute(() ->
+                        cartItemDAO.deleteByCartIdAndProductId(removeItem.getCartId(), removeItem.getProductId()));
                 if (onItemRemoveListener != null) {
                     onItemRemoveListener.onItemRemoved(currentPosition);
                 }

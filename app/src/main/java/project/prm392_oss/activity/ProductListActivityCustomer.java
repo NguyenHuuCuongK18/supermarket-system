@@ -101,8 +101,9 @@ public class ProductListActivityCustomer extends AppCompatActivity implements Pr
 
     private void setupCartButton() {
         ivCart.setOnClickListener(v -> {
-            CartManager.getCartItems(this).observe(this, cartItems -> {
-                if (cartItems == null || cartItems.isEmpty()) {
+            SharedPreferences prefs = getSharedPreferences("USER_PREFS", MODE_PRIVATE);
+            int userId = prefs.getInt("USER_ID", -1);
+            CartManager.getCartItems(this, userId).observe(this, cartItems -> {                if (cartItems == null || cartItems.isEmpty()) {
                     Toast.makeText(this, "Giỏ hàng trống!", Toast.LENGTH_SHORT).show();
                 } else {
                     startActivity(new Intent(this, CartActivityCustomer.class));

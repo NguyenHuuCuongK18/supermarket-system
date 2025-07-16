@@ -11,8 +11,7 @@ import project.prm392_oss.dto.CartItemDTO;
 import project.prm392_oss.utils.manager.CartManager;
 
 public class CartViewModel extends ViewModel {
-    public LiveData<List<CartItemDTO>> getCartItems(Context context) {
-
-        return CartManager.getCartItems(context);
+    public LiveData<List<CartItemDTO>> getCartItems(Context context, int userId) {
+        return CartManager.getCartItems(context, userId);
     }
 }

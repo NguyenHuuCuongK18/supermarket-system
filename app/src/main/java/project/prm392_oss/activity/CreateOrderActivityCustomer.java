@@ -106,10 +106,9 @@ public class CreateOrderActivityCustomer extends AppCompatActivity {
             try {
                 if (selectedItems != null) {
                     for (CartItemDTO item : selectedItems) {
-                        CartItem cartItem = item.toCartItem();
                         DatabaseClient.getInstance(this).getAppDatabase()
-                                .cartItemDAO().deleteCartItem(cartItem);
-                    }
+                                .cartItemDAO()
+                                .deleteByCartIdAndProductId(item.getCartId(), item.getProductId());                    }
                 }
 
                 runOnUiThread(() -> {

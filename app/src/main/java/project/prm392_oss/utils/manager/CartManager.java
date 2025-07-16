@@ -39,9 +39,9 @@ public class CartManager {
     }
 
 
-    public static LiveData<List<CartItemDTO>> getCartItems(Context context) {
+    public static LiveData<List<CartItemDTO>> getCartItems(Context context, int userId) {
         AppDatabase db = AppDatabase.getInstance(context);
-        return db.cartDAO().getCartItems(1);
+        return db.cartDAO().getCartItems(userId);
     }
 
 

@@ -7,6 +7,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.content.SharedPreferences;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -95,10 +96,15 @@ public class ProductDetailActivityCustomer extends AppCompatActivity {
     // 🛒 Xử lý thêm sản phẩm vào giỏ hàng
     private void addToCart(Product product, int quantity) {
         if (product != null) {
-            int userId = 1; // Giả định ID người dùng là 1
-            product.setStock_quantity(quantity);
-            CartManager.addToCart(this, userId, product);
-            Toast.makeText(this, product.getName() + " đã thêm vào giỏ hàng", Toast.LENGTH_SHORT).show();
+            SharedPreferences prefs = getSharedPreferences("USER_PREFS", MODE_PRIVATE);
+            int userId = prefs.getInt("USER_ID", -1);
+            if (userId != -1) {
+                product.setStock_quantity(quantity);
+                CartManager.addToCart(this, userId, product);
+                Toast.makeText(this, product.getName() + " đã thêm vào giỏ hàng", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(this, "Không tìm thấy thông tin người dùng", Toast.LENGTH_SHORT).show();
+            }
         } else {
             Toast.makeText(this, "Không thể thêm sản phẩm vào giỏ hàng", Toast.LENGTH_SHORT).show();
         }
