@@ -6,12 +6,10 @@ import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.ViewModelProvider;
 
 import project.prm392_oss.R;
@@ -24,8 +22,8 @@ public class AddEmployeeActivity extends AppCompatActivity {
 
     private EditText edtUsername, edtPassword, edtName, edtEmail, edtPhone, edtAddress;
     private Spinner spRole;
-    private Button btnSave, btnSelectImage;
-    private ImageView ivProfile;
+    private Button btnSave;
+
 
     private UserViewModel userViewModel;
     private RoleViewModel roleViewModel;
@@ -48,8 +46,7 @@ public class AddEmployeeActivity extends AppCompatActivity {
         edtAddress = findViewById(R.id.edtAddress);
         spRole = findViewById(R.id.spRole);
         btnSave = findViewById(R.id.btnSave);
-        btnSelectImage = findViewById(R.id.btnSelectImage);
-        ivProfile = findViewById(R.id.ivProfile);
+
 
         userViewModel = new ViewModelProvider(this).get(UserViewModel.class);
         roleViewModel = new ViewModelProvider(this).get(RoleViewModel.class);
@@ -114,8 +111,6 @@ public class AddEmployeeActivity extends AppCompatActivity {
             finish();
         });
 
-        btnSelectImage.setOnClickListener(v -> {
-        });
     }
 
     @Override

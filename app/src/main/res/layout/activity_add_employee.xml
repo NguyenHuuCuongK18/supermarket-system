@@ -3,7 +3,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:paddingStart="16dp"
+    android:paddingEnd="16dp"
+    android:paddingBottom="16dp"
+    android:paddingTop="?attr/actionBarSize">
 
     <TextView
         android:id="@+id/tvAddEmployee"
@@ -62,21 +65,6 @@
         android:id="@+id/spRole"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
-
-    <Button
-        android:id="@+id/btnSelectImage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="#006CB0"
-        android:textColor="#FFFFFF"
-        android:text="Select Image"/>
-
-    <ImageView
-        android:id="@+id/ivProfile"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_gravity="center"
-        android:src="@drawable/defaultimage"/>
 
     <Button
         android:id="@+id/btnSave"

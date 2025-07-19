@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginHorizontal="20dp"
-    android:layout_marginTop="100dp"
+    android:paddingTop="?attr/actionBarSize"
     android:gravity="center_horizontal"
     android:orientation="vertical"
     tools:context=".activity.UpdateProductActivity">

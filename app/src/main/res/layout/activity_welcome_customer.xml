@@ -119,5 +119,18 @@
             android:padding="12dp"
             android:gravity="center"
             android:elevation="6dp" />
+
+        <Button
+            android:id="@+id/btnViewOrders"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="VIEW ORDERS"
+            android:backgroundTint="#006CB0"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:layout_marginTop="8dp"
+            android:padding="12dp"
+            android:gravity="center"
+            android:elevation="6dp" />
     </LinearLayout>
 </ScrollView>

@@ -16,11 +16,13 @@ import project.prm392_oss.R;
 import project.prm392_oss.adapter.CategoryAdapterCustomer;
 import project.prm392_oss.database.AppDatabase;
 import project.prm392_oss.entity.Cart;
+import project.prm392_oss.activity.OrderHistoryActivityCustomer;
 
 public class WelcomeActivityCustomer extends AppCompatActivity {
 
     private TextView tvWelcome;
     private RecyclerView rvCategory;
+    private Button btnViewOrders;
     private Button btnShopNow;
     private ImageView ivProfile;
     private CategoryAdapterCustomer categoryAdapter;
@@ -37,6 +39,7 @@ public class WelcomeActivityCustomer extends AppCompatActivity {
         rvCategory = findViewById(R.id.rvCategory);
         btnShopNow = findViewById(R.id.btnShopNow);
         ivProfile = findViewById(R.id.ivProfile);
+        btnViewOrders = findViewById(R.id.btnViewOrders);
 
         db = AppDatabase.getInstance(this);
         categoryAdapter = new CategoryAdapterCustomer();
@@ -57,6 +60,11 @@ public class WelcomeActivityCustomer extends AppCompatActivity {
 
         ivProfile.setOnClickListener(v -> {
             Intent intent = new Intent(WelcomeActivityCustomer.this, EditProfileActivity.class);
+            startActivity(intent);
+        });
+
+        btnViewOrders.setOnClickListener(v -> {
+            Intent intent = new Intent(WelcomeActivityCustomer.this, OrderHistoryActivityCustomer.class);
             startActivity(intent);
         });
 
