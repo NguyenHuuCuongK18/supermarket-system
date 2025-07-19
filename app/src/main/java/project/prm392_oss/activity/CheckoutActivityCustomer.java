@@ -9,6 +9,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import project.prm392_oss.R;
+import project.prm392_oss.activity.WelcomeActivityCustomer;
 
 public class CheckoutActivityCustomer extends AppCompatActivity {
 
@@ -44,8 +45,8 @@ public class CheckoutActivityCustomer extends AppCompatActivity {
     private void handleCheckout() {
         Toast.makeText(this, "Thanh toán thành công!", Toast.LENGTH_SHORT).show();
 
-        Intent intent = new Intent(this, MainActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+        Intent intent = new Intent(this, WelcomeActivityCustomer.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
         finish();
     }

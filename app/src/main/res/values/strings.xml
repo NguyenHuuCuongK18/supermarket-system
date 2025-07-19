@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">PRM392_OSS</string>
     <string name="product_image">Product Image</string>
+    <string name="checkout_customer_name">Name: %1$s</string>
+    <string name="checkout_phone_number">Phone: %1$s</string>
+    <string name="checkout_address">Address: %1$s</string>
+    <string name="checkout_back_home">Back to Home</string>
 </resources>
