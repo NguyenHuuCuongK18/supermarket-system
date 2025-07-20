@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -23,7 +24,7 @@ import project.prm392_oss.viewModel.CategoryViewModel;
 import project.prm392_oss.viewModel.ProductViewModel;
 
 public class ProductListOfEmployeeActivity extends AppCompatActivity {
-    private EditText category_of_product_tv;
+    private TextView category_of_product_tv;
     private CategoryViewModel categoryViewModel;
     private ListView list_products_lv;
     private EmployeeProductOfEmployeeAdapter adapter;

@@ -66,7 +66,7 @@ public class RegisterActivity extends AppCompatActivity {
                 Toast.makeText(RegisterActivity.this, "Tài khoản đã tồn tại!", Toast.LENGTH_SHORT).show();
             } else {
 
-                User newUser = new User(0, username, password, "", email, phone, "", 2);
+                User newUser = new User(0, username, password, "", email, phone, "", 3);
                 userRepository.insert(newUser);
 
                 Toast.makeText(RegisterActivity.this, "Đăng ký thành công!", Toast.LENGTH_SHORT).show();

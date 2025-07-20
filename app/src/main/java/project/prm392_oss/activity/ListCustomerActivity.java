@@ -83,7 +83,7 @@ public class ListCustomerActivity extends AppCompatActivity {
         if (users == null) return null;
         List<User> filtered = new ArrayList<>();
         for (User user : users) {
-            if (user.getRole_id() == 4) {
+            if (user.getRole_id() == 3) {
                 filtered.add(user);
             }
         }
