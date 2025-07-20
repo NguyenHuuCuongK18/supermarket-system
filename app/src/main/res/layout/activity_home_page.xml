@@ -8,15 +8,16 @@
     tools:context=".activity.HomePageActivity">
 
 
-
     <ImageButton
         android:id="@+id/btn_menu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@android:drawable/ic_menu_more"
-        android:contentDescription="More options"
         android:background="?attr/selectableItemBackground"
-        android:padding="8dp"/>
+        android:contentDescription="More options"
+        android:padding="8dp"
+        android:src="@android:drawable/ic_menu_more"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

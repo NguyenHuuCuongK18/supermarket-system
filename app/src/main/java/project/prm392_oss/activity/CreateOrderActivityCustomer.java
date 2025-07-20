@@ -6,6 +6,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.view.MenuItem;
+
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -19,6 +21,8 @@ import project.prm392_oss.database.DatabaseClient;
 import project.prm392_oss.dto.CartItemDTO;
 import project.prm392_oss.entity.CartItem;
 import project.prm392_oss.entity.Order;
+import project.prm392_oss.entity.Product;
+
 
 public class CreateOrderActivityCustomer extends AppCompatActivity {
 
@@ -38,6 +42,10 @@ public class CreateOrderActivityCustomer extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_order_customer);
+
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
 
         // Khởi tạo các thành phần giao diện
         etCustomerName = findViewById(R.id.etCustomerName);
@@ -108,8 +116,19 @@ public class CreateOrderActivityCustomer extends AppCompatActivity {
                     for (CartItemDTO item : selectedItems) {
                         DatabaseClient.getInstance(this).getAppDatabase()
                                 .cartItemDAO()
-                                .deleteByCartIdAndProductId(item.getCartId(), item.getProductId());                    }
-                }
+                                .deleteByCartIdAndProductId(item.getCartId(), item.getProductId());
+
+                        // Giảm số lượng tồn kho của sản phẩm
+                        Product product = DatabaseClient.getInstance(this).getAppDatabase()
+                                .productDAO().getProductById(item.getProductId());
+                        if (product != null) {
+                            int newStock = product.getStock_quantity() - item.getQuantity();
+                            if (newStock < 0) newStock = 0;
+                            product.setStock_quantity(newStock);
+                            DatabaseClient.getInstance(this).getAppDatabase()
+                                    .productDAO().update(product);
+                        }
+                    }                }
 
                 runOnUiThread(() -> {
                     Toast.makeText(this, "Thanh toán thành công!", Toast.LENGTH_SHORT).show();
@@ -169,5 +188,12 @@ public class CreateOrderActivityCustomer extends AppCompatActivity {
             }
         }).start();
     }
-
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }

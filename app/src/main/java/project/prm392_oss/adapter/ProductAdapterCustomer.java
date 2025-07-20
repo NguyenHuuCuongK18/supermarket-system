@@ -76,6 +76,7 @@ public class ProductAdapterCustomer extends RecyclerView.Adapter<ProductAdapterC
         String formattedPrice = NumberFormat.getCurrencyInstance(new Locale("en", "US"))
                 .format(product.getSale_price());
         holder.textViewPrice.setText(formattedPrice);
+        holder.textViewStock.setText("Stock: " + product.getStock_quantity());
 
         // Tải ảnh từ URL bằng Picasso
         Picasso.get()
@@ -85,15 +86,10 @@ public class ProductAdapterCustomer extends RecyclerView.Adapter<ProductAdapterC
                 .into(holder.ivProductImage);
 
         // 👉 Xử lý sự kiện khi nhấn vào sản phẩm
-        holder.itemView.setOnClickListener(v -> {
-            Intent intent = new Intent(context, ProductDetailActivityCustomer.class);
-            intent.putExtra("productId", product.getProduct_id());
-            intent.putExtra("productName", product.getName());
-            intent.putExtra("productDescription", product.getDescription());
-            intent.putExtra("productPrice", product.getSale_price());
-            intent.putExtra("productImage", product.getImageUrl());
-            context.startActivity(intent);
-        });
+        if (itemClickListener != null) {
+            itemClickListener.onItemClick(product);
+
+        };
 
         // 👉 Xử lý sự kiện khi nhấn vào nút "Add to Cart"
         holder.btnAddToCart.setOnClickListener(v -> {
@@ -114,7 +110,7 @@ public class ProductAdapterCustomer extends RecyclerView.Adapter<ProductAdapterC
     }
 
     public static class ProductViewHolder extends RecyclerView.ViewHolder {
-        TextView textViewName, textViewPrice;
+        TextView textViewName, textViewPrice, textViewStock;
         Button btnAddToCart;
         ImageView ivProductImage;
 
@@ -123,6 +119,7 @@ public class ProductAdapterCustomer extends RecyclerView.Adapter<ProductAdapterC
             ivProductImage = itemView.findViewById(R.id.ivProductImage);
             textViewName = itemView.findViewById(R.id.tvProductName);
             textViewPrice = itemView.findViewById(R.id.tvProductPrice);
+            textViewStock = itemView.findViewById(R.id.tvProductStock);
             btnAddToCart = itemView.findViewById(R.id.btnAddToCart);
 
         }

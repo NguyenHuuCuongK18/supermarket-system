@@ -9,6 +9,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
+import android.view.MenuItem;
+
 import javax.mail.MessagingException;
 import java.util.Random;
 
@@ -28,6 +30,10 @@ public class ForgetPasswordActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forget_password);
+
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
 
         emailInput = findViewById(R.id.email_input);
         sendButton = findViewById(R.id.send_btn);
@@ -97,5 +103,14 @@ public class ForgetPasswordActivity extends AppCompatActivity {
                 runOnUiThread(() -> Toast.makeText(this, "Failed to send email. Try again!", Toast.LENGTH_LONG).show());
             }
         }).start();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

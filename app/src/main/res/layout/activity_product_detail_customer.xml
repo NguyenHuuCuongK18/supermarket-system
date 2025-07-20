@@ -48,8 +48,17 @@
             android:text="Giá: $0.00"
             android:textSize="18sp"
             android:textStyle="bold"
+            android:textColor="#FF5722" />
+
+        <!-- Tồn kho -->
+        <TextView
+            android:id="@+id/tvProductStock"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tồn kho: 0"
+            android:textSize="16sp"
             android:textColor="#FF5722"
-            android:layout_marginTop="8dp" />
+            android:layout_marginTop="4dp" />
 
         <!-- Số lượng -->
         <LinearLayout

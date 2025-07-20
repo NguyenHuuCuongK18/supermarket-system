@@ -6,6 +6,7 @@ import android.widget.SearchView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
+import android.view.MenuItem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +27,9 @@ public class ProductSearchActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_search);
-
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
         listView = findViewById(R.id.product_list);
         adapter = new UserProductAdapter(this, productList);
         listView.setAdapter(adapter);
@@ -39,6 +42,14 @@ public class ProductSearchActivity extends AppCompatActivity {
         });
 
         handleSearch();
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void handleSearch() {

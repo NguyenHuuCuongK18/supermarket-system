@@ -7,6 +7,7 @@ import android.util.Log;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.view.MenuItem;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -33,7 +34,9 @@ public class WelcomeActivityCustomer extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome_customer);
-
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
         // Ánh xạ View
         tvWelcome = findViewById(R.id.tvWelcome);
         rvCategory = findViewById(R.id.rvCategory);
@@ -126,5 +129,12 @@ public class WelcomeActivityCustomer extends AppCompatActivity {
             Log.e("WelcomeActivityCustomer", "Failed to create new cart", e);
         }
     }
-
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }

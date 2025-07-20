@@ -3,6 +3,7 @@ package project.prm392_oss.activity;
 import android.os.Bundle;
 import android.widget.ListView;
 import android.widget.Toast;
+import android.view.MenuItem;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -23,6 +24,10 @@ public class OrderHistoryActivityCustomer extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_history_customer);
+
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
 
         listViewOrders = findViewById(R.id.listViewOrders);
 
@@ -50,5 +55,14 @@ public class OrderHistoryActivityCustomer extends AppCompatActivity {
                         Toast.makeText(this, "Lỗi khi tải lịch sử đơn hàng!", Toast.LENGTH_SHORT).show());
             }
         }).start();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

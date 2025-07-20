@@ -8,6 +8,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.content.SharedPreferences;
+import android.view.MenuItem;
+
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -21,7 +23,7 @@ import project.prm392_oss.database.AppDatabase;
 public class ProductDetailActivityCustomer extends AppCompatActivity {
 
     private ImageView imgProduct;
-    private TextView tvProductName, tvProductDescription, tvProductPrice;
+    private TextView tvProductName, tvProductDescription, tvProductPrice, tvProductStock;
     private EditText etQuantity;
     private Button btnAddToCart;
     private Product product;
@@ -31,10 +33,15 @@ public class ProductDetailActivityCustomer extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_detail_customer);
 
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+
         // Ánh xạ view từ layout
         imgProduct = findViewById(R.id.imgProduct);
         tvProductName = findViewById(R.id.tvProductName);
         tvProductDescription = findViewById(R.id.tvProductDescription);
+        tvProductStock = findViewById(R.id.tvProductStock);
         tvProductPrice = findViewById(R.id.tvProductPrice);
         etQuantity = findViewById(R.id.etQuantity);
         btnAddToCart = findViewById(R.id.btnAddToCart);
@@ -83,6 +90,7 @@ public class ProductDetailActivityCustomer extends AppCompatActivity {
                     tvProductName.setText(product.getName() != null ? product.getName() : "Không có tên");
                     tvProductDescription.setText(product.getDescription() != null ? product.getDescription() : "Không có mô tả");
                     tvProductPrice.setText("Giá: $" + (product.getSale_price() != 0 ? product.getSale_price() : "N/A"));
+                    tvProductStock.setText("Tồn kho: " + product.getStock_quantity());
                 });
             } else {
                 runOnUiThread(() -> {
@@ -99,7 +107,7 @@ public class ProductDetailActivityCustomer extends AppCompatActivity {
             SharedPreferences prefs = getSharedPreferences("USER_PREFS", MODE_PRIVATE);
             int userId = prefs.getInt("USER_ID", -1);
             if (userId != -1) {
-                product.setStock_quantity(quantity);
+//                product.setStock_quantity(quantity);
                 CartManager.addToCart(this, userId, product);
                 Toast.makeText(this, product.getName() + " đã thêm vào giỏ hàng", Toast.LENGTH_SHORT).show();
             } else {
@@ -117,5 +125,13 @@ public class ProductDetailActivityCustomer extends AppCompatActivity {
         } catch (NumberFormatException e) {
             return 0;
         }
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

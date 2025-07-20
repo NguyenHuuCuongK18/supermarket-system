@@ -66,13 +66,13 @@ dependencies {
 
 
     // https://mvnrepository.com/artifact/com.github.bumptech.glide/glide
-    implementation("com.github.bumptech.glide:glide:4.16.0")
+    implementation(libs.glide)
 // https://mvnrepository.com/artifact/javax.mail/javax.mail-api
-    implementation ("com.sun.mail:android-mail:1.6.2")
-    implementation ("com.sun.mail:android-activation:1.6.2")
+    implementation (libs.android.mail)
+    implementation (libs.android.activation)
 
 
     // https://mvnrepository.com/artifact/com.squareup.picasso/picasso
-    implementation("com.squareup.picasso:picasso:2.71828")
+    implementation(libs.squareup.picasso)
 
 }

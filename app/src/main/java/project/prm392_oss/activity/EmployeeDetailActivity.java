@@ -28,6 +28,10 @@ public class EmployeeDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_employee_detail);
 
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+
         tvId = findViewById(R.id.tvId);
         tvName = findViewById(R.id.tvName);
         tvEmail = findViewById(R.id.tvEmail);
@@ -70,6 +74,10 @@ public class EmployeeDetailActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+            return true;
+        }
         if (item.getItemId() == R.id.nav_employee_management) {
             startActivity(new Intent(EmployeeDetailActivity.this, ListEmployeeActivity.class));
             return true;
