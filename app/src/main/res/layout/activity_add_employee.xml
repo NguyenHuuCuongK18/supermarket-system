@@ -6,8 +6,8 @@
     android:paddingStart="16dp"
     android:paddingEnd="16dp"
     android:paddingBottom="16dp"
-    android:paddingTop="?attr/actionBarSize">
-
+    android:paddingTop="?attr/actionBarSize"
+    android:fitsSystemWindows="true">
     <TextView
         android:id="@+id/tvAddEmployee"
         android:layout_width="match_parent"

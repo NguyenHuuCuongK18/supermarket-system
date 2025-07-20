@@ -8,6 +8,7 @@
     android:layout_margin="20dp"
     android:orientation="vertical"
     android:paddingTop="?attr/actionBarSize"
+    android:fitsSystemWindows="true"
     tools:context=".activity.ProductListOfEmployeeActivity">
 
     <TextView

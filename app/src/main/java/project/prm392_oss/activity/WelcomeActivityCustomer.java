@@ -7,7 +7,10 @@ import android.util.Log;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
+import project.prm392_oss.activity.LoginActivity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -129,10 +132,31 @@ public class WelcomeActivityCustomer extends AppCompatActivity {
             Log.e("WelcomeActivityCustomer", "Failed to create new cart", e);
         }
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
             finish();
+            return true;
+        } else if (item.getItemId() == R.id.action_view_profile) {
+            startActivity(new Intent(WelcomeActivityCustomer.this, EditProfileActivity.class));
+            return true;
+        } else if (item.getItemId() == R.id.action_logout) {
+            SharedPreferences prefs = getSharedPreferences("USER_PREFS", MODE_PRIVATE);
+            SharedPreferences.Editor editor = prefs.edit();
+            editor.remove("USER_ID");
+            editor.apply();
+
+            Intent intent = new Intent(WelcomeActivityCustomer.this, LoginActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+            Toast.makeText(WelcomeActivityCustomer.this, "Logged out successfully", Toast.LENGTH_SHORT).show();
             return true;
         }
         return super.onOptionsItemSelected(item);

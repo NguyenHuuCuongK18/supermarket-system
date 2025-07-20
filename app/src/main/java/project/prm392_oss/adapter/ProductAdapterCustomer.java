@@ -87,9 +87,8 @@ public class ProductAdapterCustomer extends RecyclerView.Adapter<ProductAdapterC
 
         // 👉 Xử lý sự kiện khi nhấn vào sản phẩm
         if (itemClickListener != null) {
-            itemClickListener.onItemClick(product);
-
-        };
+            holder.itemView.setOnClickListener(v -> itemClickListener.onItemClick(product));
+        }
 
         // 👉 Xử lý sự kiện khi nhấn vào nút "Add to Cart"
         holder.btnAddToCart.setOnClickListener(v -> {
