@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
-import android.widget.Toast;
 import android.widget.Spinner;
 import android.widget.ArrayAdapter;
 import android.widget.AdapterView;
@@ -24,7 +23,7 @@ import project.prm392_oss.entity.Role;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ListEmployeeActivity extends AppCompatActivity {
+public class ListUsersActivity extends AppCompatActivity {
 
     private UserViewModel userViewModel;
     private RoleViewModel roleViewModel;
@@ -38,7 +37,7 @@ public class ListEmployeeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_list_employee);
+        setContentView(R.layout.activity_list_users);
 
         // Check if ActionBar is not null before calling methods on it
         if (getSupportActionBar() != null) {
@@ -55,7 +54,7 @@ public class ListEmployeeActivity extends AppCompatActivity {
         userViewModel = new ViewModelProvider(this).get(UserViewModel.class);
         roleViewModel = new ViewModelProvider(this).get(RoleViewModel.class);
 
-        roleViewModel.getRolesForEmployees().observe(this, roles -> {
+        roleViewModel.getAllRoles().observe(this, roles -> {
             roleOptions.clear();
             roleOptions.add(new Role(-1, "All Roles"));
             roleOptions.addAll(roles);
@@ -67,10 +66,8 @@ public class ListEmployeeActivity extends AppCompatActivity {
 
         userViewModel.getAllUsers().observe(this, users -> {
             allUsers.clear();
-            for (User user : users) {
-                if (user.getRole_id() != 4) { // exclude customers
-                    allUsers.add(user);
-                }
+            if (users != null) {
+                allUsers.addAll(users);
             }
             filterUsers();
         });
@@ -86,7 +83,7 @@ public class ListEmployeeActivity extends AppCompatActivity {
         });
 
         createEmployeeButton.setOnClickListener(v -> {
-            Intent intent = new Intent(ListEmployeeActivity.this, AddEmployeeActivity.class);
+            Intent intent = new Intent(ListUsersActivity.this, AddEmployeeActivity.class);
             startActivity(intent);
         });
     }
@@ -103,13 +100,13 @@ public class ListEmployeeActivity extends AppCompatActivity {
             return true;
         }
         if (item.getItemId() == R.id.nav_employee_management) {
-            startActivity(new Intent(ListEmployeeActivity.this, ListEmployeeActivity.class));
+            startActivity(new Intent(ListUsersActivity.this, ListUsersActivity.class));
             return true;
         } else if (item.getItemId() == R.id.nav_customer_management) {
-            startActivity(new Intent(ListEmployeeActivity.this, ListCustomerActivity.class));
+            startActivity(new Intent(ListUsersActivity.this, ListUsersActivity.class));
             return true;
         } else if (item.getItemId() == R.id.nav_product_management) {
-            startActivity(new Intent(ListEmployeeActivity.this, ListProductActivity.class));
+            startActivity(new Intent(ListUsersActivity.this, ListProductActivity.class));
             return true;
         } else {
             return super.onOptionsItemSelected(item);
@@ -118,7 +115,7 @@ public class ListEmployeeActivity extends AppCompatActivity {
 
     private void filterUsers() {
         if (userAdapter == null) {
-            userAdapter = new UserAdapter(new ArrayList<>(), ListEmployeeActivity.this, userViewModel);
+            userAdapter = new UserAdapter(new ArrayList<>(), ListUsersActivity.this, userViewModel);
             recyclerView.setAdapter(userAdapter);
         }
 

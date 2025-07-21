@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import project.prm392_oss.R;
 import project.prm392_oss.repository.UserRepository;
+import project.prm392_oss.activity.ListProductActivity;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -84,8 +85,7 @@ public class LoginActivity extends AppCompatActivity {
                     } else if ("Manager".equals(roleName)) {
                         intent = new Intent(LoginActivity.this, ListProductActivity.class);
                     } else if ("Employee".equals(roleName)) {
-                        intent = new Intent(LoginActivity.this, ListCategoriesActivity.class);
-                    }
+                        intent = new Intent(LoginActivity.this, ListProductActivity.class);                    }
 
                     if (intent != null) {
                         intent.putExtra("USER_ID", user.getUser_id());

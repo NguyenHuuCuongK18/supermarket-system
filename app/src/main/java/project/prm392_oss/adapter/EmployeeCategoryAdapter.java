@@ -10,7 +10,7 @@ import android.widget.Button;
 
 import java.util.List;
 
-import project.prm392_oss.activity.ProductListOfEmployeeActivity;
+import project.prm392_oss.activity.ListProductActivity;
 import project.prm392_oss.R;
 import project.prm392_oss.entity.Category;
 
@@ -55,7 +55,7 @@ public class EmployeeCategoryAdapter extends BaseAdapter {
         holder.category_item_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, ProductListOfEmployeeActivity.class);
+                Intent intent = new Intent(context, ListProductActivity.class);
                 intent.putExtra("category_id", String.valueOf(c.getCategory_id()));
                 context.startActivity(intent);
             }

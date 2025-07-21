@@ -35,6 +35,7 @@ import project.prm392_oss.entity.Supplier;
 import project.prm392_oss.viewModel.CategoryViewModel;
 import project.prm392_oss.viewModel.ProductViewModel;
 import project.prm392_oss.viewModel.SupplierViewModel;
+import project.prm392_oss.activity.ListProductActivity;
 
 public class UpdateProductActivity extends AppCompatActivity {
     private EditText product_name_edt, product_quantity_edt, import_price_edt, sale_price_edt, image_URL_edt, product_description_tml;
@@ -105,7 +106,7 @@ public class UpdateProductActivity extends AppCompatActivity {
                         try{
                             Product updatedProduct = new Product(p.getProduct_id(), name, description, importPrice, salePrice, quantity, selectedCategoryId, selectedSupplierId, image);
                             productViewModel.update(updatedProduct);
-                            Intent intent = new Intent(UpdateProductActivity.this, ProductListOfEmployeeActivity.class);
+                            Intent intent = new Intent(UpdateProductActivity.this, ListProductActivity.class);
                             intent.putExtra("category_id", String.valueOf(p.getCategory_id()));
                             startActivity(intent);
                             Toast.makeText(UpdateProductActivity.this, "Update product successfully", Toast.LENGTH_SHORT).show();

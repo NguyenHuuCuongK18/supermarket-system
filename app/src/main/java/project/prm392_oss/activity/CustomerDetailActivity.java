@@ -18,6 +18,7 @@ import project.prm392_oss.adapter.OrderHistoryAdapterCustomer;
 import project.prm392_oss.database.DatabaseClient;
 import project.prm392_oss.entity.Order;
 import project.prm392_oss.entity.User;
+import project.prm392_oss.activity.ListUsersActivity;
 import project.prm392_oss.viewModel.UserViewModel;
 
 public class CustomerDetailActivity extends AppCompatActivity {
@@ -84,7 +85,7 @@ public class CustomerDetailActivity extends AppCompatActivity {
         }
 
         if (id == R.id.nav_employee_management) {
-            startActivity(new Intent(CustomerDetailActivity.this, ListEmployeeActivity.class));
+            startActivity(new Intent(CustomerDetailActivity.this, ListUsersActivity.class));
             return true;
         } else if (id == R.id.nav_product_management) {
             startActivity(new Intent(CustomerDetailActivity.this, ListProductActivity.class));

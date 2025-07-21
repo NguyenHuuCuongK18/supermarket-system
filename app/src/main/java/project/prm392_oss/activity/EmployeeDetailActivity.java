@@ -16,6 +16,8 @@ import com.bumptech.glide.Glide;
 import project.prm392_oss.R;
 import project.prm392_oss.entity.User;
 import project.prm392_oss.viewModel.UserViewModel;
+import project.prm392_oss.activity.ListUsersActivity;
+
 
 public class EmployeeDetailActivity extends AppCompatActivity {
 
@@ -79,7 +81,7 @@ public class EmployeeDetailActivity extends AppCompatActivity {
             return true;
         }
         if (item.getItemId() == R.id.nav_employee_management) {
-            startActivity(new Intent(EmployeeDetailActivity.this, ListEmployeeActivity.class));
+            startActivity(new Intent(EmployeeDetailActivity.this, ListUsersActivity.class));
             return true;
         } else if (item.getItemId() == R.id.nav_customer_management) {
             startActivity(new Intent(EmployeeDetailActivity.this, ListCustomerActivity.class));

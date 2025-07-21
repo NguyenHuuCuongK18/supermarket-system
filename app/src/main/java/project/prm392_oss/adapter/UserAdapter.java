@@ -9,12 +9,12 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
 
 import project.prm392_oss.R;
 import project.prm392_oss.activity.EmployeeDetailActivity;
-import project.prm392_oss.activity.ListEmployeeActivity;
+import project.prm392_oss.activity.CustomerDetailActivity;
+import project.prm392_oss.activity.ListUsersActivity;
 import project.prm392_oss.entity.User;
 import project.prm392_oss.viewModel.UserViewModel;
 
@@ -44,11 +44,11 @@ public class UserAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         if (viewType == VIEW_TYPE_HEADER) {
             View headerView = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.activity_header_list_employee, parent, false);
+                    .inflate(R.layout.activity_header_list_users, parent, false);
             return new HeaderViewHolder(headerView);
         } else {
             View itemView = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.activity_item_list_employee, parent, false);
+                    .inflate(R.layout.activity_item_list_users, parent, false);
             return new UserViewHolder(itemView);
         }
     }
@@ -95,12 +95,15 @@ public class UserAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             userNameTextView.setText(user.getName());
             userPhoneTextView.setText(user.getPhone());
 
-            userViewModel.getRoleName(user.getRole_id()).observe((ListEmployeeActivity) context, roleName -> {
+            userViewModel.getRoleName(user.getRole_id()).observe((ListUsersActivity) context, roleName -> {
                 userRoleTextView.setText(roleName);
             });
 
             viewButton.setOnClickListener(v -> {
-                Intent intent = new Intent(context, EmployeeDetailActivity.class);  // Dùng context để gọi startActivity
+                Class<?> dest = (user.getRole_id() == 3)
+                        ? CustomerDetailActivity.class
+                        : EmployeeDetailActivity.class;
+                Intent intent = new Intent(context, dest);
                 intent.putExtra("userId", user.getUser_id());
                 context.startActivity(intent);
             });

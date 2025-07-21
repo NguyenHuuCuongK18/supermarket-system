@@ -32,6 +32,7 @@ import project.prm392_oss.entity.Supplier;
 import project.prm392_oss.viewModel.CategoryViewModel;
 import project.prm392_oss.viewModel.ProductViewModel;
 import project.prm392_oss.viewModel.SupplierViewModel;
+import project.prm392_oss.activity.ListProductActivity;
 
 public class AddProductActivity extends AppCompatActivity {
     private EditText add_product_name_edt, add_product_quantity_edt, add_import_price_edt, add_sale_price_edt, add_product_description_tml, add_image_URL_edt;
@@ -87,7 +88,7 @@ public class AddProductActivity extends AppCompatActivity {
                         @Override
                         public void onChanged(Product product) {
                             currentProduct = product;
-                            Intent intent = new Intent(AddProductActivity.this, ProductListOfEmployeeActivity.class);
+                            Intent intent = new Intent(AddProductActivity.this, ListProductActivity.class);
                             intent.putExtra("category_id", String.valueOf(product.getCategory_id()));
                             startActivity(intent);
                             Toast.makeText(AddProductActivity.this, "Add product successfully", Toast.LENGTH_SHORT).show();

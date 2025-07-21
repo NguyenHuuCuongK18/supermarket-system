@@ -22,6 +22,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import project.prm392_oss.R;
 import project.prm392_oss.entity.User;
 import project.prm392_oss.viewModel.UserViewModel;
+import project.prm392_oss.activity.ListUsersActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -64,7 +65,7 @@ public class ListCustomerActivity extends AppCompatActivity {
             onBackPressed();
             return true;
         } else if (item.getItemId() == R.id.nav_employee_management) {
-            startActivity(new Intent(ListCustomerActivity.this, ListEmployeeActivity.class));
+            startActivity(new Intent(ListCustomerActivity.this, ListUsersActivity.class));
             return true;
         } else if (item.getItemId() == R.id.nav_product_management) {
             startActivity(new Intent(ListCustomerActivity.this, ListProductActivity.class));
@@ -156,8 +157,8 @@ public class ListCustomerActivity extends AppCompatActivity {
                 userPhoneTextView.setText(user.getPhone());
 
                 ordersButton.setOnClickListener(v -> {
-                    Intent intent = new Intent(ListCustomerActivity.this, OrdersListActivity.class);
-                    intent.putExtra("customerId", user.getUser_id());
+                    Intent intent = new Intent(ListCustomerActivity.this, CustomerDetailActivity.class);
+                    intent.putExtra("userId", user.getUser_id());
                     startActivity(intent);
                 });
 

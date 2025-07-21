@@ -18,7 +18,7 @@
             android:id="@+id/tvAddEmployee"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="List Employee"
+            android:text="List Users"
             android:textSize="24sp"
             android:textColor="#006CB0"
             android:gravity="center"

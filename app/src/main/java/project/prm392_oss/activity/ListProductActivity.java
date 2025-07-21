@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
+import android.widget.Spinner;
+import android.widget.ArrayAdapter;
+import android.widget.AdapterView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
@@ -14,16 +17,24 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import project.prm392_oss.R;
 import project.prm392_oss.entity.Product;
+import project.prm392_oss.entity.Category;
 import project.prm392_oss.viewModel.ProductViewModel;
+import project.prm392_oss.viewModel.CategoryViewModel;
 import project.prm392_oss.adapter.ProductAdapter;
+import project.prm392_oss.activity.ListUsersActivity;
+
 
 import java.util.List;
 
 public class ListProductActivity extends AppCompatActivity {
 
     private ProductViewModel productViewModel;
+    private CategoryViewModel categoryViewModel;
     private RecyclerView recyclerView;
     private ProductAdapter productAdapter;
+    private Spinner spFilterCategory;
+    private final java.util.List<Product> allProducts = new java.util.ArrayList<>();
+    private java.util.List<Category> categoryOptions = new java.util.ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,14 +42,56 @@ public class ListProductActivity extends AppCompatActivity {
         setContentView(R.layout.activity_product_list);
 
         recyclerView = findViewById(R.id.recyclerView);
+        spFilterCategory = findViewById(R.id.spFilterCategory);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         productViewModel = new ViewModelProvider(this).get(ProductViewModel.class);
+        categoryViewModel = new ViewModelProvider(this).get(CategoryViewModel.class);
+
+        categoryViewModel.getAllCategories().observe(this, categories -> {
+            categoryOptions.clear();
+            categoryOptions.add(new Category(-1, "All Categories"));
+            if (categories != null) categoryOptions.addAll(categories);
+            ArrayAdapter<Category> adapter = new ArrayAdapter<>(this,
+                    android.R.layout.simple_spinner_item, categoryOptions);
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            spFilterCategory.setAdapter(adapter);
+        });
+
         productViewModel.getAllProducts().observe(this, products -> {
-            productAdapter = new ProductAdapter(products);
-            recyclerView.setAdapter(productAdapter);
+            allProducts.clear();
+            if (products != null) allProducts.addAll(products);
+            filterProducts();
+        });
+
+        spFilterCategory.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, android.view.View view, int position, long id) {
+                filterProducts();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) { }
         });
     }
+
+    private void filterProducts() {
+        if (productAdapter == null) {
+            productAdapter = new ProductAdapter(new java.util.ArrayList<>());
+            recyclerView.setAdapter(productAdapter);
+        }
+
+        Category selected = (Category) spFilterCategory.getSelectedItem();
+        int selectedId = selected != null ? selected.getCategory_id() : -1;
+        java.util.List<Product> filtered = new java.util.ArrayList<>();
+        for (Product p : allProducts) {
+            if (selectedId == -1 || p.getCategory_id() == selectedId) {
+                filtered.add(p);
+            }
+        }
+        productAdapter.updateData(filtered);
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -49,10 +102,10 @@ public class ListProductActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.nav_employee_management) {
-            startActivity(new Intent(ListProductActivity.this, ListEmployeeActivity.class));
+            startActivity(new Intent(ListProductActivity.this, ListUsersActivity.class));
             return true;
         } else if (item.getItemId() == R.id.nav_customer_management) {
-            startActivity(new Intent(ListProductActivity.this, ListCustomerActivity.class));
+            startActivity(new Intent(ListProductActivity.this, ListUsersActivity.class));
             return true;
         } else if (item.getItemId() == R.id.nav_product_management) {
             return true;

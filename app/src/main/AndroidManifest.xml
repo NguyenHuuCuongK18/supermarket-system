@@ -71,23 +71,14 @@
             android:label="Role Managerment"
             android:exported="true"/>
         <activity
-            android:name=".activity.ListCustomerActivity"
-            android:label="Customer Managerment"
-            android:exported="true"/>
-        <activity
             android:name=".activity.CustomerDetailActivity"
             android:label="Customer Managerment"
-            android:parentActivityName=".activity.ListCustomerActivity"
-            android:exported="true"/>
-        <activity
-            android:name=".activity.OrdersListActivity"
-            android:label="Customer Managerment"
-            android:parentActivityName=".activity.ListCustomerActivity"
+            android:parentActivityName=".activity.ListUsersActivity"
             android:exported="true"/>
         <activity
             android:name=".activity.OrderDetailActivity"
             android:label="Customer Managerment"
-            android:parentActivityName=".activity.OrdersListActivity"
+            android:parentActivityName=".activity.CustomerDetailActivity"
             android:exported="true"/>
 
         <activity
@@ -97,26 +88,26 @@
 
 
         <activity
-            android:name=".activity.ListEmployeeActivity"
-            android:label="Employee Managerment"
+            android:name=".activity.ListUsersActivity"
+            android:label="User Management"
             android:exported="true"/>
         <activity
             android:name=".activity.EmployeeDetailActivity"
-            android:label="Employee Managerment"
-            android:parentActivityName=".activity.ListEmployeeActivity"
+            android:label="User Management"
+            android:parentActivityName=".activity.ListUsersActivity"
             android:exported="true">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activity.ListEmployeeActivity"/>
+                android:value=".activity.ListUsersActivity"/>
         </activity>
         <activity
             android:name=".activity.AddEmployeeActivity"
-            android:label="Employee Managerment"
-            android:parentActivityName=".activity.ListEmployeeActivity"
+            android:label="User Management"
+            android:parentActivityName=".activity.ListUsersActivity"
             android:exported="true">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activity.ListEmployeeActivity"/>
+                android:value=".activity.ListUsersActivity"/>
         </activity>
         <activity
             android:name=".activity.ListProductActivity"

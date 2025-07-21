@@ -96,4 +96,10 @@ public class ProductAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             }
         }
     }
+
+    public void updateData(List<Product> newProducts) {
+        productList.clear();
+        productList.addAll(newProducts);
+        notifyDataSetChanged();
+    }
 }
