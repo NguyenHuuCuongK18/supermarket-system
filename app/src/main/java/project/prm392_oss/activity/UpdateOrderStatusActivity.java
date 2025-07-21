@@ -30,7 +30,9 @@ import project.prm392_oss.viewModel.OrderViewModel;
 import project.prm392_oss.viewModel.UserViewModel;
 
 public class UpdateOrderStatusActivity extends BaseActivity {
-    private TextView orderstatus_customer_name_tv, orderstatus_orderdate_tv, order_total_amount_tv;
+    private TextView orderstatus_customer_name_tv, orderstatus_orderdate_tv,
+            orderstatus_customer_email_tv, orderstatus_customer_phone_tv,
+            orderstatus_customer_address_tv, order_total_amount_tv;
     private RecyclerView order_details_rv;
     private OrderDetailsViewModel orderDetailsViewModel;
     private OrderViewModel orderViewModel;
@@ -50,6 +52,9 @@ public class UpdateOrderStatusActivity extends BaseActivity {
         orderstatus_customer_name_tv = findViewById(R.id.orderstatus_customer_name_tv);
         orderstatus_orderdate_tv = findViewById(R.id.orderstatus_orderdate_tv);
         order_total_amount_tv = findViewById(R.id.order_total_amount_tv);
+        orderstatus_customer_phone_tv = findViewById(R.id.orderstatus_customer_phone_tv);
+        orderstatus_customer_email_tv = findViewById(R.id.orderstatus_customer_email_tv);
+        orderstatus_customer_address_tv = findViewById(R.id.orderstatus_customer_address_tv);
         order_details_rv = findViewById(R.id.order_details_rv);
         order_status_sp = findViewById(R.id.order_status_sp);
         update_order_status_btn = findViewById(R.id.update_order_status_btn);
@@ -62,14 +67,10 @@ public class UpdateOrderStatusActivity extends BaseActivity {
         orderViewModel.getOrderById(Integer.parseInt(orderID)).observe(this, new Observer<Order>() {
             @Override
             public void onChanged(Order order) {
-                //get customer name
-                UserViewModel userViewModel = new ViewModelProvider(UpdateOrderStatusActivity.this).get(UserViewModel.class);
-                userViewModel.getUserById(order.getCustomer_id()).observe(UpdateOrderStatusActivity.this, new Observer<User>() {
-                            @Override
-                            public void onChanged(User user) {
-                                orderstatus_customer_name_tv.setText(user.getName());
-                            }
-                        });
+                orderstatus_customer_name_tv.setText(order.getCustomer_name());
+                orderstatus_customer_email_tv.setText(order.getCustomer_email());
+                orderstatus_customer_phone_tv.setText(order.getCustomer_phone());
+                orderstatus_customer_address_tv.setText(order.getCustomer_address());
                 orderstatus_orderdate_tv.setText(order.getOrder_date());
                 order_total_amount_tv.setText(order.getTotal_amount() + "$");
 
