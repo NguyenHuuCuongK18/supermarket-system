@@ -181,10 +181,7 @@ public class ProductListActivityCustomer extends BaseActivity
         } else if (id == R.id.action_view_profile) {
             startActivity(new Intent(this, EditProfileActivity.class));
             return true;
-        } else if (id == R.id.action_search) {
-            startActivity(new Intent(this, ProductSearchActivity.class));
-            return true;
-        }  else if (id == R.id.action_logout) {
+        } else if (id == R.id.action_logout) {
             SessionManager.logout(this);
         }
         return super.onOptionsItemSelected(item);
