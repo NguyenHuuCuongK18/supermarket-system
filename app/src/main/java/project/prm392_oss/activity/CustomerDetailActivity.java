@@ -90,7 +90,9 @@ public class CustomerDetailActivity extends AppCompatActivity {
         } else if (id == R.id.nav_product_management) {
             startActivity(new Intent(CustomerDetailActivity.this, ListProductActivity.class));
             return true;
-        }
+        } else if (id == R.id.nav_order_management) {
+        startActivity(new Intent(CustomerDetailActivity.this, ListOrdersActivity.class));
+        return true;
 
         return super.onOptionsItemSelected(item);
     }

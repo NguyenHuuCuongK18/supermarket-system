@@ -113,6 +113,10 @@ public class ListUsersActivity extends AppCompatActivity {
         } else if (item.getItemId() == R.id.nav_product_management) {
             startActivity(new Intent(ListUsersActivity.this, ListProductActivity.class));
             return true;
+        }
+        else if (item.getItemId() == R.id.nav_order_management) {
+            startActivity(new Intent(ListUsersActivity.this, ListOrdersActivity.class));
+            return true;
         } else {
             return super.onOptionsItemSelected(item);
         }

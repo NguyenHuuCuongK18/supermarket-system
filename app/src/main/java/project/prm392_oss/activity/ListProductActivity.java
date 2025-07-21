@@ -106,7 +106,9 @@ public class ListProductActivity extends AppCompatActivity {
             return true;
         } else if (item.getItemId() == R.id.nav_product_management) {
             return true;
-        }
+        } else if (item.getItemId() == R.id.nav_order_management) {
+            startActivity(new Intent(ListCustomerActivity.this, ListOrdersActivity.class));
+            return true;
         if (item.getItemId() == R.id.view_profile) {
             Intent intent = new Intent(ListProductActivity.this, EditProfileActivity.class);
             startActivity(intent);

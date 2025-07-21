@@ -86,7 +86,9 @@ public class EmployeeDetailActivity extends AppCompatActivity {
         } else if (item.getItemId() == R.id.nav_product_management) {
             startActivity(new Intent(EmployeeDetailActivity.this, ListProductActivity.class));
             return true;
-        }
+        } else if (item.getItemId() == R.id.nav_order_management) {
+            startActivity(new Intent(EmployeeDetailActivity.this, ListOrdersActivity.class));
+            return true;
         return super.onOptionsItemSelected(item);
     }
 }
