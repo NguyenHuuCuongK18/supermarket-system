@@ -1,6 +1,10 @@
 package project.prm392_oss.activity;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.SearchView;
 import android.widget.Toast;
 
@@ -18,6 +22,10 @@ import project.prm392_oss.R;
 import project.prm392_oss.adapter.EmployeeListOrderAdapter;
 import project.prm392_oss.entity.Order;
 import project.prm392_oss.viewModel.OrderViewModel;
+import project.prm392_oss.activity.AddProductActivity;
+import project.prm392_oss.activity.SupplierListActivity;
+import project.prm392_oss.activity.EditProfileActivity;
+import project.prm392_oss.activity.LoginActivity;
 
 public class ListOrdersActivity extends BaseActivity {
     private SearchView search_order_sv;
@@ -30,7 +38,7 @@ public class ListOrdersActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.employee_activity_list_orders);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("Order List");
 
         search_order_sv = findViewById(R.id.search_order_sv);
@@ -67,5 +75,50 @@ public class ListOrdersActivity extends BaseActivity {
                 return false;
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_of_employee, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        Intent intent;
+        int id = item.getItemId();
+        if(id == R.id.add_product_menu) {
+            intent = new Intent(ListOrdersActivity.this, AddProductActivity.class);
+            startActivity(intent);
+            return true;
+        }
+//        if (id == R.id.supplier_mgt_menu){
+//            intent = new Intent(ListOrdersActivity.this, SupplierListActivity.class);
+//            startActivity(intent);
+//            return true;
+//        }
+        if (id == R.id.order_mgt_menu) {
+            intent = new Intent(ListOrdersActivity.this, ListOrdersActivity.class);
+            startActivity(intent);
+            return true;
+        }
+        if (id == R.id.view_profile) {
+            intent = new Intent(ListOrdersActivity.this, EditProfileActivity.class);
+            startActivity(intent);
+            return true;
+        }
+        if (id == R.id.logout) {
+            SharedPreferences prefs = getSharedPreferences("USER_PREFS", MODE_PRIVATE);
+            SharedPreferences.Editor editor = prefs.edit();
+            editor.remove("USER_ID");
+            editor.apply();
+
+            intent = new Intent(ListOrdersActivity.this, LoginActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+            Toast.makeText(ListOrdersActivity.this, "Logged out successfully", Toast.LENGTH_SHORT).show();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

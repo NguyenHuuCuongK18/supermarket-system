@@ -24,6 +24,7 @@ import project.prm392_oss.adapter.UserAdapter;
 import project.prm392_oss.entity.Role;
 import java.util.ArrayList;
 import java.util.List;
+import project.prm392_oss.activity.SupplierListActivity;
 
 public class ListUsersActivity extends BaseActivity {
 
@@ -43,7 +44,7 @@ public class ListUsersActivity extends BaseActivity {
 
         // Check if ActionBar is not null before calling methods on it
         if (getSupportActionBar() != null) {
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
 
@@ -114,7 +115,10 @@ public class ListUsersActivity extends BaseActivity {
             startActivity(new Intent(ListUsersActivity.this, ListProductActivity.class));
             return true;
         }
-        else if (item.getItemId() == R.id.nav_order_management) {
+        else if (item.getItemId() == R.id.nav_supplier_management) {
+            startActivity(new Intent(ListUsersActivity.this, SupplierListActivity.class));
+            return true;
+        } else if (item.getItemId() == R.id.nav_order_management) {
             startActivity(new Intent(ListUsersActivity.this, ListOrdersActivity.class));
             return true;
         } else {

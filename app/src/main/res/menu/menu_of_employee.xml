@@ -2,8 +2,8 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:id="@+id/add_product_menu"
         android:title="Add Product"/>
-    <item android:id="@+id/supplier_mgt_menu"
-        android:title="Supplier Management"/>
+<!--    <item android:id="@+id/supplier_mgt_menu"-->
+<!--        android:title="Supplier Management"/>-->
     <item android:id="@+id/order_mgt_menu"
         android:title="Order Management"/>
     <item android:title="Profile Management">

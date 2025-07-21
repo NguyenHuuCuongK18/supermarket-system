@@ -34,7 +34,7 @@ public class AddEmployeeActivity extends BaseActivity {
         setContentView(R.layout.activity_add_employee);
 
         if (getSupportActionBar() != null) {
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
 

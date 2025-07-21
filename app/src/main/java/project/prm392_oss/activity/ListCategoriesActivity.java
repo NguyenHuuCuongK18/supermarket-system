@@ -68,11 +68,11 @@ public class ListCategoriesActivity extends BaseActivity {
             startActivity(intent);
             return true;
         }
-        if (id ==R.id.supplier_mgt_menu){
-            intent = new Intent(ListCategoriesActivity.this, SupplierListActivity.class);
-            startActivity(intent);
-            return true;
-        }
+//        if (id ==R.id.supplier_mgt_menu){
+//            intent = new Intent(ListCategoriesActivity.this, SupplierListActivity.class);
+//            startActivity(intent);
+//            return true;
+//        }
         if (id == R.id.order_mgt_menu) {
             intent = new Intent(ListCategoriesActivity.this, ListOrdersActivity.class);
             startActivity(intent);

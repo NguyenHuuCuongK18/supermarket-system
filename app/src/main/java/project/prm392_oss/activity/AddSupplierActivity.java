@@ -27,7 +27,7 @@ public class AddSupplierActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.employee_activity_add_supplier);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("Add Supplier");
 
         add_supplier_name_edt = findViewById(R.id.add_supplier_name_edt);

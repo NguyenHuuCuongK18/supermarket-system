@@ -41,7 +41,7 @@ public class ListCustomerActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_customer);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);  // Hiển thị nút quay lại
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);  // Hiển thị nút quay lại
         getSupportActionBar().setDisplayShowHomeEnabled(true);  // Hiển thị biểu tượng home
 
         recyclerView = findViewById(R.id.recyclerViewCustomer);

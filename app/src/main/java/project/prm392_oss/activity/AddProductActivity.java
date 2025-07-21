@@ -50,7 +50,7 @@ public class AddProductActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.employee_activity_add_product);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("Add Product");
 
         add_product_name_edt = findViewById(R.id.add_product_name_edt);
