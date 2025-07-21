@@ -20,6 +20,7 @@ import project.prm392_oss.R;
 import project.prm392_oss.adapter.EmployeeCategoryAdapter;
 import project.prm392_oss.entity.Category;
 import project.prm392_oss.viewModel.CategoryViewModel;
+import project.prm392_oss.utils.manager.SessionManager;
 
 public class ListCategoriesActivity extends BaseActivity {
     private ListView list_categories_lv;
@@ -63,8 +64,8 @@ public class ListCategoriesActivity extends BaseActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         Intent intent;
         int id = item.getItemId();
-        if(id == R.id.add_product_menu) {
-            intent = new Intent(ListCategoriesActivity.this, AddProductActivity.class);
+        if(id == R.id.product_mgt_menu) {
+            intent = new Intent(ListCategoriesActivity.this, ListCategoriesActivity.class);
             startActivity(intent);
             return true;
         }
@@ -84,15 +85,7 @@ public class ListCategoriesActivity extends BaseActivity {
             return true;
         }
         if (id == R.id.logout) {
-            SharedPreferences prefs = getSharedPreferences("USER_PREFS", MODE_PRIVATE);
-            SharedPreferences.Editor editor = prefs.edit();
-            editor.remove("USER_ID");
-            editor.apply();
-
-            intent = new Intent(ListCategoriesActivity.this, LoginActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            startActivity(intent);
-            Toast.makeText(ListCategoriesActivity.this, "Logged out successfully", Toast.LENGTH_SHORT).show();
+            SessionManager.logout(this);
             return true;
         }
 

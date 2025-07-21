@@ -26,6 +26,8 @@ import project.prm392_oss.activity.AddProductActivity;
 import project.prm392_oss.activity.SupplierListActivity;
 import project.prm392_oss.activity.EditProfileActivity;
 import project.prm392_oss.activity.LoginActivity;
+import project.prm392_oss.activity.ListCategoriesActivity;
+import project.prm392_oss.utils.manager.SessionManager;
 
 public class ListOrdersActivity extends BaseActivity {
     private SearchView search_order_sv;
@@ -87,8 +89,8 @@ public class ListOrdersActivity extends BaseActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         Intent intent;
         int id = item.getItemId();
-        if(id == R.id.add_product_menu) {
-            intent = new Intent(ListOrdersActivity.this, AddProductActivity.class);
+        if(id == R.id.product_mgt_menu) {
+            intent = new Intent(ListOrdersActivity.this, ListCategoriesActivity.class);
             startActivity(intent);
             return true;
         }
@@ -108,15 +110,7 @@ public class ListOrdersActivity extends BaseActivity {
             return true;
         }
         if (id == R.id.logout) {
-            SharedPreferences prefs = getSharedPreferences("USER_PREFS", MODE_PRIVATE);
-            SharedPreferences.Editor editor = prefs.edit();
-            editor.remove("USER_ID");
-            editor.apply();
-
-            intent = new Intent(ListOrdersActivity.this, LoginActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            startActivity(intent);
-            Toast.makeText(ListOrdersActivity.this, "Logged out successfully", Toast.LENGTH_SHORT).show();
+            SessionManager.logout(this);
             return true;
         }
         return super.onOptionsItemSelected(item);

@@ -1,14 +1,15 @@
 package project.prm392_oss.activity;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 import android.widget.Spinner;
 import android.widget.ArrayAdapter;
 import android.widget.AdapterView;
+import android.widget.Button;
 
 import project.prm392_oss.activity.BaseActivity;
 import androidx.lifecycle.ViewModelProvider;
@@ -22,7 +23,8 @@ import project.prm392_oss.viewModel.ProductViewModel;
 import project.prm392_oss.viewModel.CategoryViewModel;
 import project.prm392_oss.adapter.ProductAdapter;
 import project.prm392_oss.activity.ListUsersActivity;
-
+import project.prm392_oss.activity.AddProductActivity;
+import project.prm392_oss.utils.manager.SessionManager;
 
 import java.util.List;
 
@@ -35,6 +37,8 @@ public class ListProductActivity extends BaseActivity {
     private Spinner spFilterCategory;
     private final java.util.List<Product> allProducts = new java.util.ArrayList<>();
     private java.util.List<Category> categoryOptions = new java.util.ArrayList<>();
+    private Button btnAddProduct;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,20 +47,16 @@ public class ListProductActivity extends BaseActivity {
 
         recyclerView = findViewById(R.id.recyclerView);
         spFilterCategory = findViewById(R.id.spFilterCategory);
+        btnAddProduct = findViewById(R.id.btnAddProduct);
+        btnAddProduct.setOnClickListener(v ->
+                startActivity(new Intent(ListProductActivity.this, AddProductActivity.class)));
+
+        String role = getSharedPreferences("USER_PREFS", MODE_PRIVATE)
+                .getString("USER_ROLE", "");
+        if (!"Employee".equals(role)) {
+            btnAddProduct.setVisibility(View.GONE);
+        }
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-        productViewModel = new ViewModelProvider(this).get(ProductViewModel.class);
-        categoryViewModel = new ViewModelProvider(this).get(CategoryViewModel.class);
-
-        categoryViewModel.getAllCategories().observe(this, categories -> {
-            categoryOptions.clear();
-            categoryOptions.add(new Category(-1, "All Categories"));
-            if (categories != null) categoryOptions.addAll(categories);
-            ArrayAdapter<Category> adapter = new ArrayAdapter<>(this,
-                    android.R.layout.simple_spinner_item, categoryOptions);
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            spFilterCategory.setAdapter(adapter);
-        });
 
         productViewModel.getAllProducts().observe(this, products -> {
             allProducts.clear();
@@ -118,15 +118,7 @@ public class ListProductActivity extends BaseActivity {
             startActivity(intent);
             return true;
         } else if (item.getItemId() == R.id.logout) {
-            SharedPreferences prefs = getSharedPreferences("USER_PREFS", MODE_PRIVATE);
-            SharedPreferences.Editor editor = prefs.edit();
-            editor.remove("USER_ID");
-            editor.apply();
-
-            Intent intent = new Intent(ListProductActivity.this, LoginActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            startActivity(intent);
-            Toast.makeText(ListProductActivity.this, "Logged out successfully", Toast.LENGTH_SHORT).show();
+            SessionManager.logout(this);
             return true;
         }
 

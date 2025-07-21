@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/add_product_menu"
-        android:title="Add Product"/>
+    <item android:id="@+id/product_mgt_menu"
+        android:title="Product Management"/>
 <!--    <item android:id="@+id/supplier_mgt_menu"-->
 <!--        android:title="Supplier Management"/>-->
     <item android:id="@+id/order_mgt_menu"

@@ -42,10 +42,10 @@ public class ListUsersActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_users);
 
-        // Check if ActionBar is not null before calling methods on it
+        // Action bar should not show back button on first screen
         if (getSupportActionBar() != null) {
-//            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            getSupportActionBar().setDisplayShowHomeEnabled(true);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+            getSupportActionBar().setDisplayShowHomeEnabled(false);
         }
 
         recyclerView = findViewById(R.id.recyclerView);
@@ -104,10 +104,10 @@ public class ListUsersActivity extends BaseActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home) {
-            onBackPressed();
-            return true;
-        }
+//        if (item.getItemId() == android.R.id.home) {
+//            onBackPressed();
+//            return true;
+//        }
         if (item.getItemId() == R.id.nav_user_management) {
             startActivity(new Intent(ListUsersActivity.this, ListUsersActivity.class));
             return true;

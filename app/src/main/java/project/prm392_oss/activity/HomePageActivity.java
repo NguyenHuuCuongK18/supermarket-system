@@ -13,6 +13,7 @@ import project.prm392_oss.activity.BaseActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import project.prm392_oss.R;
+import project.prm392_oss.utils.manager.SessionManager;
 
 public class HomePageActivity extends BaseActivity {
 
@@ -46,16 +47,7 @@ public class HomePageActivity extends BaseActivity {
                     startActivity(new Intent(HomePageActivity.this, EditProfileActivity.class));
                     return true;
                 } else if (itemId == R.id.action_logout) {
-                    SharedPreferences prefs = getSharedPreferences("USER_PREFS", MODE_PRIVATE);
-                    SharedPreferences.Editor editor = prefs.edit();
-                    editor.remove("USER_ID");
-                    editor.apply();
-
-                    Intent intent = new Intent(HomePageActivity.this, LoginActivity.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    startActivity(intent);
-                    Toast.makeText(HomePageActivity.this, "Logged out successfully", Toast.LENGTH_SHORT).show();
-                    return true;
+                    SessionManager.logout(HomePageActivity.this);
                 }
 
                 return false;
