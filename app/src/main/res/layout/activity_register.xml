@@ -54,6 +54,18 @@
         android:padding="13dp" />
 
     <EditText
+        android:id="@+id/full_name_reg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="40dp"
+        android:background="@drawable/edittext_background"
+        android:drawablePadding="10dp"
+        android:elevation="3dp"
+        android:hint="Full Name"
+        android:padding="13dp" />
+
+    <EditText
         android:id="@+id/phone_reg"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

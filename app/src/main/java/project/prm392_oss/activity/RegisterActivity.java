@@ -16,8 +16,7 @@ import project.prm392_oss.entity.User;
 import project.prm392_oss.repository.UserRepository;
 
 public class RegisterActivity extends BaseActivity {
-
-    private EditText usernameEditText, passwordEditText, confirmPasswordEditText, emailEditText, phoneEditText;
+    private EditText usernameEditText, passwordEditText, confirmPasswordEditText, emailEditText, phoneEditText, fullNameEditText;
     private Button registerButton;
     private TextView loginTextView;
     private UserRepository userRepository;
@@ -36,6 +35,7 @@ public class RegisterActivity extends BaseActivity {
         usernameEditText = findViewById(R.id.username_reg);
         passwordEditText = findViewById(R.id.password_reg);
         confirmPasswordEditText = findViewById(R.id.confirm_password_reg);
+        fullNameEditText = findViewById(R.id.full_name_reg);
         emailEditText = findViewById(R.id.email_reg);
         phoneEditText = findViewById(R.id.phone_reg);
         registerButton = findViewById(R.id.register_btn);
@@ -55,9 +55,10 @@ public class RegisterActivity extends BaseActivity {
         String confirmPassword = confirmPasswordEditText.getText().toString().trim();
         String email = emailEditText.getText().toString().trim();
         String phone = phoneEditText.getText().toString().trim();
+        String fullName = fullNameEditText.getText().toString().trim();
 
 
-        if (!validateInput(username, password, confirmPassword, email, phone)) {
+        if (!validateInput(username, password, confirmPassword, email, phone, fullName)) {
             return;
         }
 
@@ -67,7 +68,7 @@ public class RegisterActivity extends BaseActivity {
                 Toast.makeText(RegisterActivity.this, "Tài khoản đã tồn tại!", Toast.LENGTH_SHORT).show();
             } else {
 
-                User newUser = new User(0, username, password, "", email, phone, "", 3);
+                User newUser = new User(0, username, password, fullName, email, phone, "", 3);
                 userRepository.insert(newUser);
 
                 Toast.makeText(RegisterActivity.this, "Đăng ký thành công!", Toast.LENGTH_SHORT).show();
@@ -77,8 +78,8 @@ public class RegisterActivity extends BaseActivity {
         }));
     }
 
-    private boolean validateInput(String username, String password, String confirmPassword, String email, String phone) {
-        if (username.isEmpty() || password.isEmpty() || confirmPassword.isEmpty() || email.isEmpty() || phone.isEmpty()) {
+    private boolean validateInput(String username, String password, String confirmPassword, String email, String phone, String fullName) {
+        if (username.isEmpty() || password.isEmpty() || confirmPassword.isEmpty() || email.isEmpty() || phone.isEmpty() || fullName.isEmpty()) {
             Toast.makeText(this, "Vui lòng nhập đầy đủ thông tin!", Toast.LENGTH_SHORT).show();
             return false;
         }

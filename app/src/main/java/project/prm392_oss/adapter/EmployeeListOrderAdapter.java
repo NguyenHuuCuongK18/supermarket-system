@@ -11,10 +11,6 @@ import android.widget.Filterable;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.lifecycle.LifecycleOwner;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelStoreOwner;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -23,21 +19,17 @@ import java.util.List;
 import project.prm392_oss.R;
 import project.prm392_oss.activity.UpdateOrderStatusActivity;
 import project.prm392_oss.entity.Order;
-import project.prm392_oss.entity.User;
-import project.prm392_oss.viewModel.UserViewModel;
 
 public class EmployeeListOrderAdapter extends RecyclerView.Adapter<EmployeeListOrderAdapter.OrderViewHolder> implements Filterable {
     private Context context;
     private List<Order> list;
     private List<Order> filteredOrderList;
-    private UserViewModel userViewModel;
     private String searchText = "";
 
     public EmployeeListOrderAdapter(Context context, List<Order> list) {
         this.context = context;
         this.list = list;
         this.filteredOrderList = list;
-        this.userViewModel = new ViewModelProvider((ViewModelStoreOwner) context).get(UserViewModel.class);
     }
 
     @NonNull
@@ -49,23 +41,8 @@ public class EmployeeListOrderAdapter extends RecyclerView.Adapter<EmployeeListO
     @Override
     public void onBindViewHolder(@NonNull OrderViewHolder holder, int position) {
         Order o = filteredOrderList.get(position);
-        userViewModel.getUserById(o.getCustomer_id()).observe((LifecycleOwner) context, new Observer<User>() {
-            @Override
-            public void onChanged(User user) {
-                if (user != null) {
-                    holder.order_customer_name_tv.setText(user.getName());
-                    if (!searchText.isEmpty()) {
-                        if (!user.getName().toLowerCase().contains(searchText.toLowerCase())) {
-                            if (filteredOrderList.contains(o)) {
-                                filteredOrderList.remove(o);
-                                notifyDataSetChanged();
-                            }
-                        }
-                    }
-                }
-            }
-        });
-        holder.order_total_tv.setText("Total: "+ o.getTotal_amount() + " $");
+        holder.order_customer_name_tv.setText(o.getCustomer_name());
+        holder.order_total_tv.setText("Total: " + o.getTotal_amount() + " $");
         holder.order_orderdate_tv.setText(o.getOrder_date());
         holder.update_order_btn.setOnClickListener(v -> {
             Intent intent = new Intent(context, UpdateOrderStatusActivity.class);
@@ -85,9 +62,15 @@ public class EmployeeListOrderAdapter extends RecyclerView.Adapter<EmployeeListO
             @Override
             protected FilterResults performFiltering(CharSequence constraint) {
                 searchText = constraint.toString();
-                List<Order> filteredList = new ArrayList<>(list);
+                List<Order> filteredList = new ArrayList<>();
                 if (searchText.isEmpty()) {
                     filteredList = list;
+                } else {
+                    for (Order order : list) {
+                        if (order.getCustomer_name() != null && order.getCustomer_name().toLowerCase().contains(searchText.toLowerCase())) {
+                            filteredList.add(order);
+                        }
+                    }
                 }
                 FilterResults results = new FilterResults();
                 results.values = filteredList;

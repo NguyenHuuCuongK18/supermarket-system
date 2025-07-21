@@ -1,5 +1,6 @@
 package project.prm392_oss.activity;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -37,7 +38,8 @@ public class OrderHistoryActivityCustomer extends BaseActivity {
     private void loadOrderHistory() {
         new Thread(() -> {
             try {
-                int customerId = 1; // Lấy theo user số 1
+                SharedPreferences prefs = getSharedPreferences("USER_PREFS", MODE_PRIVATE);
+                int customerId = prefs.getInt("USER_ID", -1);
                 orderList = DatabaseClient.getInstance(this).getAppDatabase()
                         .orderDAO()
                         .getOrdersByCustomerId(customerId);
