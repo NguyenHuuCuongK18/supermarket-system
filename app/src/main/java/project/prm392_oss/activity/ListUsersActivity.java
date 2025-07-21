@@ -122,6 +122,10 @@ public class ListUsersActivity extends BaseActivity {
         } else if (item.getItemId() == R.id.nav_order_management) {
             startActivity(new Intent(ListUsersActivity.this, ListOrdersActivity.class));
             return true;
+        } else if (item.getItemId() == R.id.view_profile) {
+            Intent intent = new Intent(ListUsersActivity.this, EditProfileActivity.class);
+            startActivity(intent);
+            return true;
         } else if (item.getItemId() == R.id.logout) {
             SessionManager.logout(this);
             return true;
