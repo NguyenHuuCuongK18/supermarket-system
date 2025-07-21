@@ -10,7 +10,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AppCompatActivity;
+import project.prm392_oss.activity.BaseActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -23,7 +23,7 @@ import project.prm392_oss.entity.Product;
 import project.prm392_oss.viewModel.CategoryViewModel;
 import project.prm392_oss.viewModel.ProductViewModel;
 
-public class ProductListOfEmployeeActivity extends AppCompatActivity {
+public class ProductListOfEmployeeActivity extends BaseActivity {
     private TextView category_of_product_tv;
     private CategoryViewModel categoryViewModel;
     private ListView list_products_lv;

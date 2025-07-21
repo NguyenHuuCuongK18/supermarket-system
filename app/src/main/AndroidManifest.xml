@@ -43,7 +43,10 @@
             android:name=".activity.ProductListActivityCustomer"
             android:theme="@style/Theme.MyApp"
             android:exported="false" />
-
+        <activity
+            android:name=".activity.ProductSearchActivity"
+            android:theme="@style/Theme.MyApp"
+            android:exported="false" />
         <activity
             android:name=".activity.LoginActivity"
             android:theme="@style/Theme.MyApp"

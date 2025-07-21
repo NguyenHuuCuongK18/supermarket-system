@@ -8,7 +8,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AppCompatActivity;
+import project.prm392_oss.activity.BaseActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -18,7 +18,7 @@ import project.prm392_oss.R;
 import project.prm392_oss.entity.Supplier;
 import project.prm392_oss.viewModel.SupplierViewModel;
 
-public class UpdateSupplierActivity extends AppCompatActivity {
+public class UpdateSupplierActivity extends BaseActivity {
     private EditText supplier_name_edt, supplier_phone_edt, supplier_address_edt;
     private Button supplier_update_btn;
     private SupplierViewModel supplierViewModel;

@@ -10,7 +10,7 @@ import android.view.MenuItem;
 
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
+import project.prm392_oss.activity.BaseActivity;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -24,7 +24,7 @@ import project.prm392_oss.viewModel.OrderViewModel;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class OrderDetailActivity extends AppCompatActivity {
+public class OrderDetailActivity extends BaseActivity {
 
     private RecyclerView recyclerView;
     private TextView tvOrderId, tvOrderDate, tvOrderStatus, tvTotalAmount;

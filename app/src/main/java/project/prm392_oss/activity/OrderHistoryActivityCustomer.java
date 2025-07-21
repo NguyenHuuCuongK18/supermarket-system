@@ -5,7 +5,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 import android.view.MenuItem;
 
-import androidx.appcompat.app.AppCompatActivity;
+import project.prm392_oss.activity.BaseActivity;
 
 import java.util.List;
 
@@ -14,7 +14,7 @@ import project.prm392_oss.adapter.OrderHistoryAdapterCustomer;
 import project.prm392_oss.database.DatabaseClient;
 import project.prm392_oss.entity.Order;
 
-public class OrderHistoryActivityCustomer extends AppCompatActivity {
+public class OrderHistoryActivityCustomer extends BaseActivity {
 
     private ListView listViewOrders;
     private OrderHistoryAdapterCustomer adapter;

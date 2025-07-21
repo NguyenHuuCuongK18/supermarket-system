@@ -10,14 +10,14 @@ import android.widget.Toast;
 import android.view.MenuItem;
 import androidx.annotation.NonNull;
 
-import androidx.appcompat.app.AppCompatActivity;
+import project.prm392_oss.activity.BaseActivity;
 
 import project.prm392_oss.R;
 import project.prm392_oss.dao.UserDAO;
 import project.prm392_oss.database.AppDatabase;
 import project.prm392_oss.entity.User;
 
-public class EditProfileActivity extends AppCompatActivity {
+public class EditProfileActivity extends BaseActivity {
 
     private EditText etUsername, etFullName, etEmail, etPhone, etAddress;
     private Button btnSave, changePasswordBtn;

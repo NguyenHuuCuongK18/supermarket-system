@@ -11,7 +11,7 @@ import android.content.SharedPreferences;
 import android.view.MenuItem;
 
 
-import androidx.appcompat.app.AppCompatActivity;
+import project.prm392_oss.activity.BaseActivity;
 
 import com.squareup.picasso.Picasso;
 
@@ -20,7 +20,7 @@ import project.prm392_oss.entity.Product;
 import project.prm392_oss.utils.manager.CartManager;
 import project.prm392_oss.database.AppDatabase;
 
-public class ProductDetailActivityCustomer extends AppCompatActivity {
+public class ProductDetailActivityCustomer extends BaseActivity {
 
     private ImageView imgProduct;
     private TextView tvProductName, tvProductDescription, tvProductPrice, tvProductStock;

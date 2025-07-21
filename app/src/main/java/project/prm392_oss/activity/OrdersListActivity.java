@@ -11,7 +11,7 @@ import android.widget.Toast;
 import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
+import project.prm392_oss.activity.BaseActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -22,7 +22,7 @@ import project.prm392_oss.R;
 import project.prm392_oss.entity.Order;
 import project.prm392_oss.viewModel.OrderViewModel;
 
-public class OrdersListActivity extends AppCompatActivity {
+public class OrdersListActivity extends BaseActivity {
 
     private RecyclerView recyclerView;
     private OrderViewModel orderViewModel;

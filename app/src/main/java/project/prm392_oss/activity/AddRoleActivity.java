@@ -7,14 +7,14 @@ import android.widget.EditText;
 import android.widget.Button;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
+import project.prm392_oss.activity.BaseActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import project.prm392_oss.R;
 import project.prm392_oss.entity.Role;
 import project.prm392_oss.viewModel.RoleViewModel;
 
-public class AddRoleActivity extends AppCompatActivity {
+public class AddRoleActivity extends BaseActivity {
 
     private EditText edtRoleName;
     private Button btnSaveRole;

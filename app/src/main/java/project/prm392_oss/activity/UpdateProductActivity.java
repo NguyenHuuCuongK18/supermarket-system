@@ -19,7 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AppCompatActivity;
+import project.prm392_oss.activity.BaseActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -37,7 +37,7 @@ import project.prm392_oss.viewModel.ProductViewModel;
 import project.prm392_oss.viewModel.SupplierViewModel;
 import project.prm392_oss.activity.ListProductActivity;
 
-public class UpdateProductActivity extends AppCompatActivity {
+public class UpdateProductActivity extends BaseActivity {
     private EditText product_name_edt, product_quantity_edt, import_price_edt, sale_price_edt, image_URL_edt, product_description_tml;
     private TextView category_of_product_sp, supplier_of_product_sp;
     private Button browse_image_btn, update_product_info_btn;

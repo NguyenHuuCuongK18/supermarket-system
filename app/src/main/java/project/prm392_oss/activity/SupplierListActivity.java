@@ -6,7 +6,7 @@ import android.widget.Button;
 import android.widget.SearchView;
 import android.widget.Toast;
 import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AppCompatActivity;
+import project.prm392_oss.activity.BaseActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -19,7 +19,7 @@ import project.prm392_oss.adapter.EmployeeSupplierListAdapter;
 import project.prm392_oss.entity.Supplier;
 import project.prm392_oss.viewModel.SupplierViewModel;
 
-public class SupplierListActivity extends AppCompatActivity {
+public class SupplierListActivity extends BaseActivity {
     private RecyclerView supplier_list_rv;
     private Button add_supplier_btn;
     private List<Supplier> list = new ArrayList<>();

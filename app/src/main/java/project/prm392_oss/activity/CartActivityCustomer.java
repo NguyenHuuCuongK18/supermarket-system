@@ -10,7 +10,7 @@ import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
+import project.prm392_oss.activity.BaseActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -26,13 +26,15 @@ import project.prm392_oss.entity.Cart;
 import project.prm392_oss.entity.CartItem;
 import project.prm392_oss.viewModel.CartViewModel;
 
-public class CartActivityCustomer extends AppCompatActivity {
+public class CartActivityCustomer extends BaseActivity {
 
     private RecyclerView recyclerView;
     private CartAdapterCustomer adapter;
     private TextView tvEmptyCartMessage;
     private Button btnCreateOrder;
     private CartViewModel cartViewModel;
+    private Button btnBack;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +48,7 @@ public class CartActivityCustomer extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerView);
         tvEmptyCartMessage = findViewById(R.id.tvEmptyCartMessage);
         btnCreateOrder = findViewById(R.id.btnCreateOrder);
+        btnBack = findViewById(R.id.btnBack);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -60,8 +63,8 @@ public class CartActivityCustomer extends AppCompatActivity {
             Toast.makeText(this, "Không tìm thấy thông tin người dùng", Toast.LENGTH_SHORT).show();
             finish();
         }
-
         btnCreateOrder.setOnClickListener(view -> createOrder());
+        btnBack.setOnClickListener(v -> finish());
     }
 
     private void loadCartItems(int userId) {

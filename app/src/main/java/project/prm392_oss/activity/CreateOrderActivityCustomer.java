@@ -9,7 +9,7 @@ import android.widget.Toast;
 import android.view.MenuItem;
 
 
-import androidx.appcompat.app.AppCompatActivity;
+import project.prm392_oss.activity.BaseActivity;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -24,7 +24,7 @@ import project.prm392_oss.entity.Order;
 import project.prm392_oss.entity.Product;
 
 
-public class CreateOrderActivityCustomer extends AppCompatActivity {
+public class CreateOrderActivityCustomer extends BaseActivity {
 
     private EditText etCustomerName;
     private EditText etPhoneNumber;

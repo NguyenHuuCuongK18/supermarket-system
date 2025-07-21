@@ -14,7 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
+import project.prm392_oss.activity.BaseActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -25,9 +25,12 @@ import project.prm392_oss.database.DatabaseClient;
 import project.prm392_oss.entity.Cart;
 import project.prm392_oss.entity.Product;
 import project.prm392_oss.utils.manager.CartManager;
+import project.prm392_oss.utils.manager.SessionManager;
 import project.prm392_oss.viewModel.ProductViewModelCustomer;
+import project.prm392_oss.activity.ProductSearchActivity;
 
-public class ProductListActivityCustomer extends AppCompatActivity
+
+public class ProductListActivityCustomer extends BaseActivity
         implements ProductAdapterCustomer.OnAddToCartClickListener,
         ProductAdapterCustomer.OnItemClickListener {
 
@@ -37,7 +40,8 @@ public class ProductListActivityCustomer extends AppCompatActivity
     private ProgressBar progressBar;
     private TextView tvEmptyMessage;
     private ImageView ivCart;
-
+    private androidx.appcompat.widget.SearchView searchView;
+    private final java.util.List<Product> allProducts = new java.util.ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +52,7 @@ public class ProductListActivityCustomer extends AppCompatActivity
         initViews();
         setupRecyclerView();
         loadProducts();
+        setupSearch();
         setupCartButton();
 
         SharedPreferences sharedPreferences = getSharedPreferences("USER_PREFS", MODE_PRIVATE);
@@ -65,6 +70,7 @@ public class ProductListActivityCustomer extends AppCompatActivity
         progressBar = findViewById(R.id.progressBar);
         tvEmptyMessage = findViewById(R.id.tvEmptyMessage);
         ivCart = findViewById(R.id.ivCart);
+        searchView = findViewById(R.id.search_view);
 
         androidx.appcompat.widget.Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -87,6 +93,8 @@ public class ProductListActivityCustomer extends AppCompatActivity
         productViewModel.getAllProducts().observe(this, products -> {
             progressBar.setVisibility(View.GONE);
             if (products != null && !products.isEmpty()) {
+                allProducts.clear();
+                allProducts.addAll(products);
                 adapter.setProductList(products);
                 recyclerView.setVisibility(View.VISIBLE);
             } else {
@@ -108,7 +116,31 @@ public class ProductListActivityCustomer extends AppCompatActivity
             });
         });
     }
+    private void setupSearch() {
+        searchView.setOnQueryTextListener(new androidx.appcompat.widget.SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                filterProducts(query);
+                return true;
+            }
 
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                filterProducts(newText);
+                return true;
+            }
+        });
+    }
+
+    private void filterProducts(String query) {
+        java.util.List<Product> filtered = new java.util.ArrayList<>();
+        for (Product p : allProducts) {
+            if (p.getName().toLowerCase().contains(query.toLowerCase())) {
+                filtered.add(p);
+            }
+        }
+        adapter.setProductList(filtered);
+    }
     @Override
     public void onAddToCart(Product product) {
         if (product != null) {
@@ -134,7 +166,7 @@ public class ProductListActivityCustomer extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_product_list_customer, menu);
-        return true;
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override
@@ -149,16 +181,11 @@ public class ProductListActivityCustomer extends AppCompatActivity
         } else if (id == R.id.action_view_profile) {
             startActivity(new Intent(this, EditProfileActivity.class));
             return true;
-        } else if (id == R.id.action_logout) {
-            SharedPreferences prefs = getSharedPreferences("USER_PREFS", MODE_PRIVATE);
-            SharedPreferences.Editor editor = prefs.edit();
-            editor.remove("USER_ID");
-            editor.apply();
-            Intent intent = new Intent(ProductListActivityCustomer.this, LoginActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            startActivity(intent);
-            Toast.makeText(this, "Logged out successfully", Toast.LENGTH_SHORT).show();
+        } else if (id == R.id.action_search) {
+            startActivity(new Intent(this, ProductSearchActivity.class));
             return true;
+        }  else if (id == R.id.action_logout) {
+            SessionManager.logout(this);
         }
         return super.onOptionsItemSelected(item);
     }

@@ -8,12 +8,12 @@ import android.widget.Toast;
 import android.view.MenuItem;
 
 
-import androidx.appcompat.app.AppCompatActivity;
+import project.prm392_oss.activity.BaseActivity;
 
 import project.prm392_oss.R;
 import project.prm392_oss.activity.WelcomeActivityCustomer;
 
-public class CheckoutActivityCustomer extends AppCompatActivity {
+public class CheckoutActivityCustomer extends BaseActivity {
 
     private TextView tvTotalAmount, tvShippingFee, tvFinalAmount;
     private Button btnCheckout;

@@ -9,7 +9,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AppCompatActivity;
+import project.prm392_oss.activity.BaseActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -21,7 +21,7 @@ import project.prm392_oss.adapter.EmployeeCategoryAdapter;
 import project.prm392_oss.entity.Category;
 import project.prm392_oss.viewModel.CategoryViewModel;
 
-public class ListCategoriesActivity extends AppCompatActivity {
+public class ListCategoriesActivity extends BaseActivity {
     private ListView list_categories_lv;
     private List<Category> list = new ArrayList<>();
     private EmployeeCategoryAdapter categoryAdapter;

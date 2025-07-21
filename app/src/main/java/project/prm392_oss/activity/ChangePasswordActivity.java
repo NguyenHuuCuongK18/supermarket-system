@@ -6,14 +6,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
+import project.prm392_oss.activity.BaseActivity;
 
 import project.prm392_oss.R;
 import project.prm392_oss.dao.UserDAO;
 import project.prm392_oss.database.AppDatabase;
 import project.prm392_oss.entity.User;
 
-public class ChangePasswordActivity extends AppCompatActivity {
+public class ChangePasswordActivity extends BaseActivity {
 
     private EditText etOldPassword, etNewPassword, etConfirmPassword;
     private Button btnChangePassword;

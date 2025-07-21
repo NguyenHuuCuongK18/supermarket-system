@@ -10,7 +10,7 @@ import android.widget.Spinner;
 import android.widget.ArrayAdapter;
 import android.widget.AdapterView;
 
-import androidx.appcompat.app.AppCompatActivity;
+import project.prm392_oss.activity.BaseActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -26,7 +26,7 @@ import project.prm392_oss.activity.ListUsersActivity;
 
 import java.util.List;
 
-public class ListProductActivity extends AppCompatActivity {
+public class ListProductActivity extends BaseActivity {
 
     private ProductViewModel productViewModel;
     private CategoryViewModel categoryViewModel;
@@ -71,7 +71,8 @@ public class ListProductActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onNothingSelected(AdapterView<?> parent) { }
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
         });
     }
 
@@ -96,7 +97,7 @@ public class ListProductActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.toolbar_menu, menu);
-        return true;
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override
@@ -107,14 +108,13 @@ public class ListProductActivity extends AppCompatActivity {
         } else if (item.getItemId() == R.id.nav_product_management) {
             return true;
         } else if (item.getItemId() == R.id.nav_order_management) {
-            startActivity(new Intent(ListCustomerActivity.this, ListOrdersActivity.class));
+            startActivity(new Intent(ListProductActivity.this, ListOrdersActivity.class));
             return true;
-        if (item.getItemId() == R.id.view_profile) {
+        } else if (item.getItemId() == R.id.view_profile) {
             Intent intent = new Intent(ListProductActivity.this, EditProfileActivity.class);
             startActivity(intent);
             return true;
-        }
-        if (item.getItemId() == R.id.logout) {
+        } else if (item.getItemId() == R.id.logout) {
             SharedPreferences prefs = getSharedPreferences("USER_PREFS", MODE_PRIVATE);
             SharedPreferences.Editor editor = prefs.edit();
             editor.remove("USER_ID");

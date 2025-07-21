@@ -9,7 +9,7 @@ import android.widget.TextView;
 import android.widget.ListView;
 import java.util.List;
 
-import androidx.appcompat.app.AppCompatActivity;
+import project.prm392_oss.activity.BaseActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -21,7 +21,7 @@ import project.prm392_oss.entity.User;
 import project.prm392_oss.activity.ListUsersActivity;
 import project.prm392_oss.viewModel.UserViewModel;
 
-public class CustomerDetailActivity extends AppCompatActivity {
+public class CustomerDetailActivity extends BaseActivity {
 
     private TextView tvId, tvName, tvEmail, tvPhone, tvAddress, tvRole, tvTotalSpent;
     private ImageView ivProfile;
@@ -72,7 +72,7 @@ public class CustomerDetailActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.toolbar_menu, menu);
-        return true;
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override
@@ -91,8 +91,9 @@ public class CustomerDetailActivity extends AppCompatActivity {
             startActivity(new Intent(CustomerDetailActivity.this, ListProductActivity.class));
             return true;
         } else if (id == R.id.nav_order_management) {
-        startActivity(new Intent(CustomerDetailActivity.this, ListOrdersActivity.class));
-        return true;
+            startActivity(new Intent(CustomerDetailActivity.this, ListOrdersActivity.class));
+            return true;
+        }
 
         return super.onOptionsItemSelected(item);
     }

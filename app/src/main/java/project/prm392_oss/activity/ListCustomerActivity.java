@@ -13,7 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
+import project.prm392_oss.activity.BaseActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -27,7 +27,7 @@ import project.prm392_oss.activity.ListUsersActivity;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ListCustomerActivity extends AppCompatActivity {
+public class ListCustomerActivity extends BaseActivity {
 
     private UserViewModel userViewModel;
     private RecyclerView recyclerView;
@@ -73,13 +73,14 @@ public class ListCustomerActivity extends AppCompatActivity {
         } else if (item.getItemId() == R.id.nav_order_management) {
             startActivity(new Intent(ListCustomerActivity.this, ListOrdersActivity.class));
             return true;
+        }
         return super.onOptionsItemSelected(item);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.toolbar_menu, menu);
-        return true;
+        return super.onCreateOptionsMenu(menu);
     }
 
     private List<User> filterCustomers(List<User> users) {

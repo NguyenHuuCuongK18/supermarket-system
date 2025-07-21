@@ -12,7 +12,7 @@ import android.view.MenuItem;
 import android.widget.Toast;
 import project.prm392_oss.activity.LoginActivity;
 
-import androidx.appcompat.app.AppCompatActivity;
+import project.prm392_oss.activity.BaseActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -23,7 +23,7 @@ import project.prm392_oss.entity.Cart;
 import project.prm392_oss.activity.OrderHistoryActivityCustomer;
 import project.prm392_oss.utils.manager.SessionManager;
 
-public class WelcomeActivityCustomer extends AppCompatActivity {
+public class WelcomeActivityCustomer extends BaseActivity {
 
     private TextView tvWelcome;
     private RecyclerView rvCategory;
@@ -149,7 +149,7 @@ public class WelcomeActivityCustomer extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override

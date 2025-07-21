@@ -9,13 +9,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.view.MenuItem;
 
-import androidx.appcompat.app.AppCompatActivity;
+import project.prm392_oss.activity.BaseActivity;
 
 import project.prm392_oss.R;
 import project.prm392_oss.entity.User;
 import project.prm392_oss.repository.UserRepository;
 
-public class RegisterActivity extends AppCompatActivity {
+public class RegisterActivity extends BaseActivity {
 
     private EditText usernameEditText, passwordEditText, confirmPasswordEditText, emailEditText, phoneEditText;
     private Button registerButton;
@@ -28,6 +28,7 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setTitle("Register");
         }
         userRepository = new UserRepository(getApplication());
 

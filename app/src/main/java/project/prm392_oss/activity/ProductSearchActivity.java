@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.widget.ListView;
 import android.widget.SearchView;
 
-import androidx.appcompat.app.AppCompatActivity;
+import project.prm392_oss.activity.BaseActivity;
 import androidx.lifecycle.ViewModelProvider;
 import android.view.MenuItem;
 
@@ -16,7 +16,7 @@ import project.prm392_oss.adapter.UserProductAdapter;
 import project.prm392_oss.entity.Product;
 import project.prm392_oss.viewModel.ProductViewModel;
 
-public class ProductSearchActivity extends AppCompatActivity {
+public class ProductSearchActivity extends BaseActivity {
 
     private ProductViewModel viewModel;
     private UserProductAdapter adapter;

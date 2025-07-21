@@ -5,7 +5,7 @@ import android.widget.SearchView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AppCompatActivity;
+import project.prm392_oss.activity.BaseActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -19,7 +19,7 @@ import project.prm392_oss.adapter.EmployeeListOrderAdapter;
 import project.prm392_oss.entity.Order;
 import project.prm392_oss.viewModel.OrderViewModel;
 
-public class ListOrdersActivity extends AppCompatActivity {
+public class ListOrdersActivity extends BaseActivity {
     private SearchView search_order_sv;
     private RecyclerView order_list_rv;
     private List<Order> list = new ArrayList<>();

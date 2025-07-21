@@ -9,7 +9,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
+import project.prm392_oss.activity.BaseActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import project.prm392_oss.R;
@@ -18,7 +18,7 @@ import project.prm392_oss.entity.User;
 import project.prm392_oss.viewModel.RoleViewModel;
 import project.prm392_oss.viewModel.UserViewModel;
 
-public class AddEmployeeActivity extends AppCompatActivity {
+public class AddEmployeeActivity extends BaseActivity {
 
     private EditText edtUsername, edtPassword, edtName, edtEmail, edtPhone, edtAddress;
     private Spinner spRole;

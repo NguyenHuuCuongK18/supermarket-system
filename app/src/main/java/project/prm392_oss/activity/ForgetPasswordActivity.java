@@ -8,7 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-import androidx.appcompat.app.AppCompatActivity;
+import project.prm392_oss.activity.BaseActivity;
 import android.view.MenuItem;
 
 import javax.mail.MessagingException;
@@ -19,7 +19,7 @@ import project.prm392_oss.dao.UserDAO;
 import project.prm392_oss.database.AppDatabase;
 import project.prm392_oss.entity.User;
 
-public class ForgetPasswordActivity extends AppCompatActivity {
+public class ForgetPasswordActivity extends BaseActivity {
     private EditText emailInput;
     private Button sendButton;
     private TextView backToSignIn;

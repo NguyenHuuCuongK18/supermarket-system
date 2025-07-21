@@ -11,7 +11,7 @@ import android.widget.AdapterView;
 import android.view.View;
 
 
-import androidx.appcompat.app.AppCompatActivity;
+import project.prm392_oss.activity.BaseActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -25,7 +25,7 @@ import project.prm392_oss.entity.Role;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ListUsersActivity extends AppCompatActivity {
+public class ListUsersActivity extends BaseActivity {
 
     private UserViewModel userViewModel;
     private RoleViewModel roleViewModel;
@@ -98,7 +98,7 @@ public class ListUsersActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.toolbar_menu, menu);
-        return true;
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override

@@ -11,7 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AppCompatActivity;
+import project.prm392_oss.activity.BaseActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -29,7 +29,7 @@ import project.prm392_oss.viewModel.OrderDetailsViewModel;
 import project.prm392_oss.viewModel.OrderViewModel;
 import project.prm392_oss.viewModel.UserViewModel;
 
-public class UpdateOrderStatusActivity extends AppCompatActivity {
+public class UpdateOrderStatusActivity extends BaseActivity {
     private TextView orderstatus_customer_name_tv, orderstatus_orderdate_tv, order_total_amount_tv;
     private RecyclerView order_details_rv;
     private OrderDetailsViewModel orderDetailsViewModel;

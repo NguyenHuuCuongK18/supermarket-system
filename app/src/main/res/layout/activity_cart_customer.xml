@@ -8,7 +8,7 @@
     android:paddingStart="16dp"
     android:paddingEnd="16dp"
     android:paddingBottom="16dp"
-    android:paddingTop="@dimen/status_bar_padding">>
+    android:paddingTop="@dimen/status_bar_padding">
 
     <!-- Cho phép lăn lên/lăn xuống -->
     <androidx.core.widget.NestedScrollView
@@ -27,7 +27,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:listitem="@layout/item_cart" />
+                tools:listitem="@layout/item_cart_customer" />
 
             <TextView
                 android:id="@+id/tvEmptyCartMessage"
@@ -53,5 +53,13 @@
         android:backgroundTint="#FF9800"
         android:textColor="#FFFFFF"
         android:layout_marginTop="16dp" />
+
+    <!-- Button to go back -->
+    <Button
+        android:id="@+id/btnBack"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Back"
+        android:layout_marginTop="8dp" />
 
 </LinearLayout>
