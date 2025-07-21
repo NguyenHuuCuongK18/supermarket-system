@@ -107,6 +107,9 @@ public class ListProductActivity extends BaseActivity {
             return true;
         } else if (item.getItemId() == R.id.nav_product_management) {
             return true;
+        } else if (item.getItemId() == R.id.nav_supplier_management) {
+            startActivity(new Intent(ListProductActivity.this, SupplierListActivity.class));
+            return true;
         } else if (item.getItemId() == R.id.nav_order_management) {
             startActivity(new Intent(ListProductActivity.this, ListOrdersActivity.class));
             return true;

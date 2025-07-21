@@ -70,6 +70,9 @@ public class ListCustomerActivity extends BaseActivity {
         } else if (item.getItemId() == R.id.nav_product_management) {
             startActivity(new Intent(ListCustomerActivity.this, ListProductActivity.class));
             return true;
+        } else if (item.getItemId() == R.id.nav_supplier_management) {
+            startActivity(new Intent(ListCustomerActivity.this, SupplierListActivity.class));
+            return true;
         } else if (item.getItemId() == R.id.nav_order_management) {
             startActivity(new Intent(ListCustomerActivity.this, ListOrdersActivity.class));
             return true;

@@ -93,6 +93,9 @@ public class CustomerDetailActivity extends BaseActivity {
         } else if (id == R.id.nav_order_management) {
             startActivity(new Intent(CustomerDetailActivity.this, ListOrdersActivity.class));
             return true;
+        } else if (id == R.id.nav_supplier_management) {
+            startActivity(new Intent(CustomerDetailActivity.this, SupplierListActivity.class));
+            return true;
         }
 
         return super.onOptionsItemSelected(item);

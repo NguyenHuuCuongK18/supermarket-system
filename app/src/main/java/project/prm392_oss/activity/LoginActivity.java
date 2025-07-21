@@ -14,6 +14,9 @@ import project.prm392_oss.activity.BaseActivity;
 import project.prm392_oss.R;
 import project.prm392_oss.repository.UserRepository;
 import project.prm392_oss.activity.ListProductActivity;
+import project.prm392_oss.activity.ListUsersActivity;
+import project.prm392_oss.activity.ListOrdersActivity;
+import project.prm392_oss.activity.WelcomeActivityCustomer;
 
 public class LoginActivity extends BaseActivity {
 
@@ -83,10 +86,10 @@ public class LoginActivity extends BaseActivity {
                     if ("Customer".equals(roleName)) {
                         intent = new Intent(LoginActivity.this, WelcomeActivityCustomer.class);
                     } else if ("Manager".equals(roleName)) {
-                        intent = new Intent(LoginActivity.this, ListProductActivity.class);
+                        intent = new Intent(LoginActivity.this, ListUsersActivity.class);
                     } else if ("Employee".equals(roleName)) {
-                        intent = new Intent(LoginActivity.this, ListProductActivity.class);                    }
-
+                        intent = new Intent(LoginActivity.this, ListOrdersActivity.class);
+                    }
                     if (intent != null) {
                         intent.putExtra("USER_ID", user.getUser_id());
                         startActivity(intent);
