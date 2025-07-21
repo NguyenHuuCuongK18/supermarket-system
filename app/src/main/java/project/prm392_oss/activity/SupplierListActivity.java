@@ -2,6 +2,7 @@ package project.prm392_oss.activity;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.SearchView;
 import android.widget.Toast;
@@ -17,6 +18,7 @@ import java.util.List;
 import project.prm392_oss.R;
 import project.prm392_oss.adapter.EmployeeSupplierListAdapter;
 import project.prm392_oss.entity.Supplier;
+import project.prm392_oss.utils.manager.SessionManager;
 import project.prm392_oss.viewModel.SupplierViewModel;
 
 public class SupplierListActivity extends BaseActivity {
@@ -78,5 +80,13 @@ public class SupplierListActivity extends BaseActivity {
                 return false;
             }
         });
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.logout) {
+            SessionManager.logout(this);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

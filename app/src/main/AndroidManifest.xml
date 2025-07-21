@@ -150,8 +150,7 @@
             android:parentActivityName=".activity.ListOrdersActivity"/>
 
         <activity android:name=".activity.ListOrdersActivity"
-            android:exported="true"
-            android:parentActivityName=".activity.ListCategoriesActivity"/>
+            android:exported="true"/>
 
     </application>
 

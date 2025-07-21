@@ -40,8 +40,10 @@ public class ListOrdersActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.employee_activity_list_orders);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("Order List");
+        // Remove back arrow since this is the entry screen for employees
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle("Order List");
+        }
 
         search_order_sv = findViewById(R.id.search_order_sv);
         order_list_rv = findViewById(R.id.order_list_rv);
