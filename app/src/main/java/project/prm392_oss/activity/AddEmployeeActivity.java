@@ -51,11 +51,27 @@ public class AddEmployeeActivity extends AppCompatActivity {
         userViewModel = new ViewModelProvider(this).get(UserViewModel.class);
         roleViewModel = new ViewModelProvider(this).get(RoleViewModel.class);
 
+        String currentRole = getSharedPreferences("USER_PREFS", MODE_PRIVATE)
+                .getString("USER_ROLE", "");
+
         roleViewModel.getRolesForEmployees().observe(this, roles -> {
-            ArrayAdapter<Role> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, roles);
+            java.util.List<Role> filtered = new java.util.ArrayList<>();
+            for (Role r : roles) {
+                if ("Manager".equals(currentRole)) {
+                    if (!"Customer".equals(r.getName())) {
+                        filtered.add(r);
+                    }
+                } else if ("Employee".equals(currentRole)) {
+                    if ("Employee".equals(r.getName())) {
+                        filtered.add(r);
+                    }
+                }
+            }
+            ArrayAdapter<Role> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, filtered);
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             spRole.setAdapter(adapter);
         });
+
 
         btnSave.setOnClickListener(v -> {
             String username = edtUsername.getText().toString().trim();

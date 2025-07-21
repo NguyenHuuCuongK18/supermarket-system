@@ -77,7 +77,7 @@ public class ListProductActivity extends AppCompatActivity {
 
     private void filterProducts() {
         if (productAdapter == null) {
-            productAdapter = new ProductAdapter(new java.util.ArrayList<>());
+            productAdapter = new ProductAdapter(this, new java.util.ArrayList<>());
             recyclerView.setAdapter(productAdapter);
         }
 
@@ -101,10 +101,7 @@ public class ListProductActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.nav_employee_management) {
-            startActivity(new Intent(ListProductActivity.this, ListUsersActivity.class));
-            return true;
-        } else if (item.getItemId() == R.id.nav_customer_management) {
+        if (item.getItemId() == R.id.nav_user_management) {
             startActivity(new Intent(ListProductActivity.this, ListUsersActivity.class));
             return true;
         } else if (item.getItemId() == R.id.nav_product_management) {

@@ -64,7 +64,7 @@ public class ListCustomerActivity extends AppCompatActivity {
         if (item.getItemId() == android.R.id.home) {
             onBackPressed();
             return true;
-        } else if (item.getItemId() == R.id.nav_employee_management) {
+        } else if (item.getItemId() == R.id.nav_user_management) {
             startActivity(new Intent(ListCustomerActivity.this, ListUsersActivity.class));
             return true;
         } else if (item.getItemId() == R.id.nav_product_management) {

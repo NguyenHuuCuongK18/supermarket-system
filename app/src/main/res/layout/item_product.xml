@@ -1,52 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:padding="16dp"
     android:background="@android:color/white"
-    android:layout_marginBottom="8dp">
+    android:layout_marginBottom="8dp"
+    android:gravity="center_vertical">
 
+    <!-- ID -->
     <TextView
         android:id="@+id/productId"
-        android:layout_width="0dp"
+        android:layout_width="15dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:gravity="center"
         android:text="ID"
-        android:textSize="14sp"
-        android:gravity="center"/>
+        android:textSize="14sp" />
 
+    <!-- Image -->
+
+    <!-- Name -->
     <ImageView
         android:id="@+id/productImage"
-        android:layout_width="60dp"
+        android:layout_width="34dp"
         android:layout_height="60dp"
         android:layout_marginStart="16dp"
+        android:scaleType="centerCrop"
         android:src="@drawable/img" />
 
     <TextView
         android:id="@+id/productName"
-        android:layout_width="0dp"
+        android:layout_width="37dp"
         android:layout_height="wrap_content"
         android:layout_weight="2"
+        android:gravity="center"
         android:text="Product Name"
-        android:textSize="14sp"
-        android:gravity="center"/>
+        android:textSize="14sp" />
 
+    <!-- Quantity -->
     <TextView
         android:id="@+id/productQuantity"
-        android:layout_width="0dp"
+        android:layout_width="57dp"
         android:layout_height="wrap_content"
         android:layout_weight="2"
+        android:gravity="center"
         android:text="Quantity"
-        android:textSize="14sp"
-        android:gravity="center"/>
+        android:textSize="14sp" />
+
+    <!-- Price -->
+
+    <!-- View button -->
 
     <TextView
         android:id="@+id/productPrice"
-        android:layout_width="0dp"
+        android:layout_width="42dp"
         android:layout_height="wrap_content"
         android:layout_weight="2"
+        android:gravity="center"
         android:text="Price"
-        android:textSize="14sp"
-        android:gravity="center"/>
+        android:textSize="14sp" />
+
+    <Button
+        android:id="@+id/btnView"
+        android:layout_width="wrap_content"
+        android:layout_height="37dp"
+        android:layout_marginStart="16dp"
+        android:gravity="center"
+        android:text="View"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <!-- Edit button -->
+    <Button
+        android:id="@+id/btnEdit"
+        android:layout_width="77dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="8dp"
+        android:gravity="center"
+        android:text="Edit"
+        tools:ignore="TouchTargetSizeCheck" />
+
 </LinearLayout>

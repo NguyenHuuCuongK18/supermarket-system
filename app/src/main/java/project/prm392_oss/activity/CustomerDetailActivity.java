@@ -84,7 +84,7 @@ public class CustomerDetailActivity extends AppCompatActivity {
             return true;
         }
 
-        if (id == R.id.nav_employee_management) {
+        if (id == R.id.nav_user_management) {
             startActivity(new Intent(CustomerDetailActivity.this, ListUsersActivity.class));
             return true;
         } else if (id == R.id.nav_product_management) {

@@ -80,11 +80,8 @@ public class EmployeeDetailActivity extends AppCompatActivity {
             finish();
             return true;
         }
-        if (item.getItemId() == R.id.nav_employee_management) {
+        if (item.getItemId() == R.id.nav_user_management) {
             startActivity(new Intent(EmployeeDetailActivity.this, ListUsersActivity.class));
-            return true;
-        } else if (item.getItemId() == R.id.nav_customer_management) {
-            startActivity(new Intent(EmployeeDetailActivity.this, ListCustomerActivity.class));
             return true;
         } else if (item.getItemId() == R.id.nav_product_management) {
             startActivity(new Intent(EmployeeDetailActivity.this, ListProductActivity.class));

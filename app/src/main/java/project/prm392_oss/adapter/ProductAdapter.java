@@ -16,13 +16,34 @@ import project.prm392_oss.R;
 import project.prm392_oss.entity.Product;
 import java.util.List;
 
+import android.content.Context;
+import android.content.Intent;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.bumptech.glide.Glide;
+
+import project.prm392_oss.R;
+import project.prm392_oss.entity.Product;
+import project.prm392_oss.activity.ProductDetailActivityCustomer;
+import project.prm392_oss.activity.UpdateProductActivity;
+import java.util.List;
+
 public class ProductAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private final List<Product> productList;
+    private final Context context;
     private static final int VIEW_TYPE_HEADER = 0;
     private static final int VIEW_TYPE_ITEM = 1;
 
-    public ProductAdapter(List<Product> productList) {
+    public ProductAdapter(Context context, List<Product> productList) {
+        this.context = context;
         this.productList = productList;
     }
 
@@ -69,6 +90,7 @@ public class ProductAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
         TextView productIdTextView, productNameTextView, productQuantityTextView, productPriceTextView;
         ImageView productImageView;
+        View btnView, btnEdit;
 
         public ProductViewHolder(View itemView) {
             super(itemView);
@@ -77,6 +99,8 @@ public class ProductAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             productQuantityTextView = itemView.findViewById(R.id.productQuantity);
             productPriceTextView = itemView.findViewById(R.id.productPrice);
             productImageView = itemView.findViewById(R.id.productImage);
+            btnView = itemView.findViewById(R.id.btnView);
+            btnEdit = itemView.findViewById(R.id.btnEdit);
         }
 
         public void bind(Product product) {
@@ -94,6 +118,18 @@ public class ProductAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                         .load(R.drawable.defaultimage)
                         .into(productImageView);
             }
+
+            btnView.setOnClickListener(v -> {
+                Intent intent = new Intent(context, ProductDetailActivityCustomer.class);
+                intent.putExtra("productId", product.getProduct_id());
+                context.startActivity(intent);
+            });
+
+            btnEdit.setOnClickListener(v -> {
+                Intent intent = new Intent(context, UpdateProductActivity.class);
+                intent.putExtra("product_id", String.valueOf(product.getProduct_id()));
+                context.startActivity(intent);
+            });
         }
     }
 

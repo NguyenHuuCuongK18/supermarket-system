@@ -8,6 +8,8 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.ArrayAdapter;
 import android.widget.AdapterView;
+import android.view.View;
+
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
@@ -49,6 +51,12 @@ public class ListUsersActivity extends AppCompatActivity {
         createEmployeeButton = findViewById(R.id.CreateEmployee);
         spFilterRole = findViewById(R.id.spFilterRole);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        String currentRole = getSharedPreferences("USER_PREFS", MODE_PRIVATE)
+                .getString("USER_ROLE", "");
+        if (!"Manager".equals(currentRole)) {
+            createEmployeeButton.setVisibility(View.GONE);
+        }
 
         // Initialize ViewModels
         userViewModel = new ViewModelProvider(this).get(UserViewModel.class);
@@ -99,10 +107,7 @@ public class ListUsersActivity extends AppCompatActivity {
             onBackPressed();
             return true;
         }
-        if (item.getItemId() == R.id.nav_employee_management) {
-            startActivity(new Intent(ListUsersActivity.this, ListUsersActivity.class));
-            return true;
-        } else if (item.getItemId() == R.id.nav_customer_management) {
+        if (item.getItemId() == R.id.nav_user_management) {
             startActivity(new Intent(ListUsersActivity.this, ListUsersActivity.class));
             return true;
         } else if (item.getItemId() == R.id.nav_product_management) {
