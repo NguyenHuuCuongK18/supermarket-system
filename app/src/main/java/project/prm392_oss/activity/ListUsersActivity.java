@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import project.prm392_oss.R;
 import project.prm392_oss.entity.User;
+import project.prm392_oss.utils.manager.SessionManager;
 import project.prm392_oss.viewModel.UserViewModel;
 import project.prm392_oss.viewModel.RoleViewModel;
 import project.prm392_oss.adapter.UserAdapter;
@@ -120,6 +121,9 @@ public class ListUsersActivity extends BaseActivity {
             return true;
         } else if (item.getItemId() == R.id.nav_order_management) {
             startActivity(new Intent(ListUsersActivity.this, ListOrdersActivity.class));
+            return true;
+        } else if (item.getItemId() == R.id.logout) {
+            SessionManager.logout(this);
             return true;
         } else {
             return super.onOptionsItemSelected(item);

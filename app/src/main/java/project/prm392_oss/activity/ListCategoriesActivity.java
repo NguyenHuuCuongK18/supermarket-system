@@ -65,7 +65,7 @@ public class ListCategoriesActivity extends BaseActivity {
         Intent intent;
         int id = item.getItemId();
         if(id == R.id.product_mgt_menu) {
-            intent = new Intent(ListCategoriesActivity.this, ListCategoriesActivity.class);
+            intent = new Intent(ListCategoriesActivity.this, ListProductActivity.class);
             startActivity(intent);
             return true;
         }

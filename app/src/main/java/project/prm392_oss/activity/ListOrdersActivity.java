@@ -40,7 +40,7 @@ public class ListOrdersActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.employee_activity_list_orders);
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("Order List");
 
         search_order_sv = findViewById(R.id.search_order_sv);
@@ -90,8 +90,7 @@ public class ListOrdersActivity extends BaseActivity {
         Intent intent;
         int id = item.getItemId();
         if(id == R.id.product_mgt_menu) {
-            intent = new Intent(ListOrdersActivity.this, ListCategoriesActivity.class);
-            startActivity(intent);
+            intent = new Intent(ListOrdersActivity.this, ListProductActivity.class);            startActivity(intent);
             return true;
         }
 //        if (id == R.id.supplier_mgt_menu){

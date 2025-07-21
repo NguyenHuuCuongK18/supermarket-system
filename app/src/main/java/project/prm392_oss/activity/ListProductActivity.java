@@ -25,6 +25,8 @@ import project.prm392_oss.adapter.ProductAdapter;
 import project.prm392_oss.activity.ListUsersActivity;
 import project.prm392_oss.activity.AddProductActivity;
 import project.prm392_oss.utils.manager.SessionManager;
+import project.prm392_oss.activity.SupplierListActivity;
+
 
 import java.util.List;
 
@@ -57,6 +59,18 @@ public class ListProductActivity extends BaseActivity {
             btnAddProduct.setVisibility(View.GONE);
         }
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        productViewModel = new ViewModelProvider(this).get(ProductViewModel.class);
+        categoryViewModel = new ViewModelProvider(this).get(CategoryViewModel.class);
+
+        categoryViewModel.getAllCategories().observe(this, categories -> {
+            categoryOptions.clear();
+            categoryOptions.add(new Category(-1, "All Categories"));
+            if (categories != null) categoryOptions.addAll(categories);
+            ArrayAdapter<Category> adapter = new ArrayAdapter<>(this,
+                    android.R.layout.simple_spinner_item, categoryOptions);
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            spFilterCategory.setAdapter(adapter);
+        });
 
         productViewModel.getAllProducts().observe(this, products -> {
             allProducts.clear();
