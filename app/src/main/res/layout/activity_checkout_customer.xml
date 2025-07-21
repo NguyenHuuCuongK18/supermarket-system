@@ -46,7 +46,7 @@
         android:id="@+id/btnCheckout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Thanh Toán"
+        android:text="Quay về trang chủ"
         android:backgroundTint="@color/teal_700"
         android:textColor="#FFFFFF"
         android:textSize="18sp"

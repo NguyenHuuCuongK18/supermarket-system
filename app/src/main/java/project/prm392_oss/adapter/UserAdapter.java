@@ -65,7 +65,11 @@ public class UserAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     public int getItemCount() {
         return userList.size() + 1; // Adding 1 for the header
     }
-
+    public void updateData(List<User> newUsers) {
+        userList.clear();
+        userList.addAll(newUsers);
+        notifyDataSetChanged();
+    }
     public class HeaderViewHolder extends RecyclerView.ViewHolder {
         public HeaderViewHolder(View itemView) {
             super(itemView);

@@ -21,6 +21,7 @@ import project.prm392_oss.adapter.CategoryAdapterCustomer;
 import project.prm392_oss.database.AppDatabase;
 import project.prm392_oss.entity.Cart;
 import project.prm392_oss.activity.OrderHistoryActivityCustomer;
+import project.prm392_oss.utils.manager.SessionManager;
 
 public class WelcomeActivityCustomer extends AppCompatActivity {
 
@@ -65,8 +66,20 @@ public class WelcomeActivityCustomer extends AppCompatActivity {
 
 
         ivProfile.setOnClickListener(v -> {
-            Intent intent = new Intent(WelcomeActivityCustomer.this, EditProfileActivity.class);
-            startActivity(intent);
+            androidx.appcompat.widget.PopupMenu popup = new androidx.appcompat.widget.PopupMenu(WelcomeActivityCustomer.this, ivProfile);
+            popup.getMenuInflater().inflate(R.menu.menu_profile_popup, popup.getMenu());
+            popup.setOnMenuItemClickListener(item -> {
+                if (item.getItemId() == R.id.action_view_profile) {
+                    Intent intent = new Intent(WelcomeActivityCustomer.this, EditProfileActivity.class);
+                    startActivity(intent);
+                    return true;
+                } else if (item.getItemId() == R.id.action_logout) {
+                    performLogout();
+                    return true;
+                }
+                return false;
+            });
+            popup.show();
         });
 
         btnViewOrders.setOnClickListener(v -> {
@@ -148,17 +161,20 @@ public class WelcomeActivityCustomer extends AppCompatActivity {
             startActivity(new Intent(WelcomeActivityCustomer.this, EditProfileActivity.class));
             return true;
         } else if (item.getItemId() == R.id.action_logout) {
-            SharedPreferences prefs = getSharedPreferences("USER_PREFS", MODE_PRIVATE);
-            SharedPreferences.Editor editor = prefs.edit();
-            editor.remove("USER_ID");
-            editor.apply();
-
-            Intent intent = new Intent(WelcomeActivityCustomer.this, LoginActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            startActivity(intent);
-            Toast.makeText(WelcomeActivityCustomer.this, "Logged out successfully", Toast.LENGTH_SHORT).show();
+            SessionManager.logout(WelcomeActivityCustomer.this);
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+    private void performLogout() {
+        SharedPreferences prefs = getSharedPreferences("USER_PREFS", MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.remove("USER_ID");
+        editor.apply();
+
+        Intent intent = new Intent(WelcomeActivityCustomer.this, LoginActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        Toast.makeText(WelcomeActivityCustomer.this, "Logged out successfully", Toast.LENGTH_SHORT).show();
     }
 }

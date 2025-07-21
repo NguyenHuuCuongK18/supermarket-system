@@ -101,7 +101,7 @@ public class UserRepository {
         return roleDAO.getRoleNameByid(roleId);
     }
     public LiveData<List<User>> getCustomers() {
-        return userDAO.getUsersByRoleId(4);
+        return userDAO.getUsersByRoleId(3);
     }
 
 }

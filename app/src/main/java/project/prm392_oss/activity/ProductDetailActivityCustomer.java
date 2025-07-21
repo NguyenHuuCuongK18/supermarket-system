@@ -43,7 +43,7 @@ public class ProductDetailActivityCustomer extends AppCompatActivity {
         tvProductDescription = findViewById(R.id.tvProductDescription);
         tvProductStock = findViewById(R.id.tvProductStock);
         tvProductPrice = findViewById(R.id.tvProductPrice);
-        etQuantity = findViewById(R.id.etQuantity);
+//        etQuantity = findViewById(R.id.etQuantity);
         btnAddToCart = findViewById(R.id.btnAddToCart);
 
         // Lấy productId từ Intent để truy vấn dữ liệu từ CSDL
